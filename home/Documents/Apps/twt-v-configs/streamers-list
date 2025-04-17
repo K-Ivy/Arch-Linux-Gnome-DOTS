@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------
+# STREAMER-NAME|QUALITY    <- If you want to set a specific quality
+# ! 2160, 1440, 1080, 720, 540, 480, 360, 240, 160, audio_only
+# -----------------------------------------------------------------
+# ! AFTER CHANGES, FULLY EXIT THE SCRIPT AND RE-ENTER !
+# -----------------------------------------------------------------
+LeekBeats|audio_only
+RelaxBeats|audio_only
+ChillHopRadio|audio_only
