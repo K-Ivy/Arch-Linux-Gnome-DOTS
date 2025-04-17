@@ -1,0 +1,33 @@
+{
+  "actions": [
+    {
+      "type": "command",
+      "label": "Open Path in Kitty",
+      "command_line": "kitty --directory %f",
+      "cwd": "%f",
+      "max_items": 1,
+      "mimetypes": ["inode/directory"]
+    },
+    {
+      "type": "command",
+      "label": "Open Path as Admin",
+      "command_line": "nautilus admin:%f",
+      "cwd": "%f",
+      "max_items": 1,
+      "mimetypes": ["inode/directory"]
+    },
+    {
+      "type": "command",
+      "label": "Copy Path",
+      "command_line": "echo -n %F | xclip -f -selection primary | xclip -selection clipboard",
+      "use_shell": true
+    },
+    {
+      "type": "command",
+      "label": "Copy Name",
+      "command_line": "echo -n %B | xclip -f -selection primary | xclip -selection clipboard",
+      "use_shell": true
+    }
+  ],
+  "debug": false
+}
