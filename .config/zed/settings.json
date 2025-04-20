@@ -7,55 +7,71 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "Catppuccin Frappé",
-  "terminal": {
-    "dock": "left"
+  "theme": {
+    "mode": "system",
+    "light": "Nordforest One",
+    "dark": "Nordforest One"
   },
-  "git_panel": {
-    "dock": "right"
-  },
-  "outline_panel": {
-    // Whether to show the outline panel button in the status bar
-    "button": false
-  },
-  "collaboration_panel": {
-    // Whether to show the collaboration panel button in the status bar.
-    "button": false
-  },
-  "ui_font_size": 16,
-  "buffer_font_size": 18,
+
   "buffer_font_family": "FiraCode Nerd Font Propo",
-  "ensure_final_newline_on_save": false,
-  "file_finder": {
-    "modal_width": "medium"
+  "buffer_font_size": 18,
+  "ui_font_size": 16,
+
+  "buffer_line_height": {
+    "custom": 1.9
   },
-  "tab_bar": {
-    "show": true
-  },
-  "assistant": {
-    "button": false
-  },
-  "scrollbar": {
-    "show": "never"
-  },
-  // Indentation, rainbow indentation
-  "indent_guides": {
-    "enabled": true,
-    "coloring": "indent_aware"
-  },
-  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
-  "inlay_hints": {
-    "enabled": true
-  },
-  // Turn off telemetry
+
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
+
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+
+  "inlay_hints": {
+    "enabled": true
+  },
+
+  "scrollbar": {
+    "show": "auto",
+    "cursors": false,
+    "git_diff": false,
+    "search_results": true,
+    "selected_text": false,
+    "selected_symbol": false,
+    "diagnostics": "none",
+    "axes": {
+      "horizontal": false,
+      "vertical": true
+    }
+  },
+
+  "ensure_final_newline_on_save": false,
+  "format_on_save": "off",
+  "restore_on_startup": "last_session",
+
   "soft_wrap": "editor_width",
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Catppuccin Frappé (Blur)"
+
+  "assistant": {
+    "button": true
+  },
+
+  "collaboration_panel": {
+    "button": false
+  },
+
+  "git_panel": {
+    "dock": "right"
+  },
+
+  "outline_panel": {
+    "button": false
+  },
+
+  "terminal": {
+    "dock": "left"
   }
 }
