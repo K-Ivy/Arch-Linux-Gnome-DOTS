@@ -57,7 +57,7 @@
 
         "search.match_background": "#88c0d033",
 
-        "panel.background": "#2e3440",
+        "panel.background": "#00000000",
         "panel.focused_border": null,
         "pane.focused_border": null,
 
@@ -81,7 +81,7 @@
         "editor.document_highlight.read_background": null,
         "editor.document_highlight.write_background": null,
 
-        "terminal.background": "#313744E2",
+        "terminal.background": "#00000000",
         "terminal.foreground": "#d3c6aa",
         "terminal.bright_foreground": null,
         "terminal.dim_foreground": null,
