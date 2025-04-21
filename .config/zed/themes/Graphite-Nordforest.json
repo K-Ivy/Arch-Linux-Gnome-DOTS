@@ -7,6 +7,7 @@
       "name": "Nordforest One",
       "appearance": "dark",
       "style": {
+
         "background": "#313744E2",
         "elevated_surface.background": "#313744F2",
         "surface.background": "#313744E2",
@@ -28,13 +29,13 @@
         "element.background": "#3b4252",
         "element.hover": "#6c99a666",
         "element.active": "#6c99a666",
-        "element.selected": "#6c99a6",
+        "element.selected": "#6c99a666",
         "element.disabled": null,
 
-        "drop_target.background": "#6c99a699",
+        "drop_target.background": "#6c99a666",
 
         "ghost_element.background": null,
-        "ghost_element.hover": "#6c99a633",
+        "ghost_element.hover": "#6c99a666",
         "ghost_element.active": null,
         "ghost_element.selected": "#6c99a666",
         "ghost_element.disabled": null,
@@ -58,8 +59,8 @@
         "search.match_background": "#88c0d033",
 
         "panel.background": "#00000000",
-        "panel.focused_border": null,
-        "pane.focused_border": null,
+        "panel.focused_border": "#6c99a666",
+        "pane.focused_border": "#6c99a666",
 
         "scrollbar.thumb.background": "#434c5e99",
         "scrollbar.thumb.hover_background": "#434c5eaa",
@@ -68,18 +69,18 @@
         "scrollbar.track.border": "#3b4252",
 
         "editor.foreground": "#d3c6aa",
-        "editor.background": "#272e3300",
-        "editor.gutter.background": "#272e3300",
-        "editor.subheader.background": null,
+        "editor.background": "#00000000",
+        "editor.gutter.background": "#00000000",
+        "editor.subheader.background": "#00000000",
         "editor.active_line.background": "#4c515cE2",
-        "editor.highlighted_line.background": null,
+        "editor.highlighted_line.background": "#4c515cE2",
         "editor.line_number": "#FFFFFF40",
         "editor.active_line_number": "#d3c6aa",
         "editor.invisible": null,
-        "editor.wrap_guide": "#1b2024",
-        "editor.active_wrap_guide": "#1b2024",
-        "editor.document_highlight.read_background": null,
-        "editor.document_highlight.write_background": null,
+        "editor.wrap_guide": "#3b4252",
+        "editor.active_wrap_guide": "#3b4252",
+        "editor.document_highlight.read_background": "#6c99a666",
+        "editor.document_highlight.write_background": "#6c99a666",
 
         "terminal.background": "#00000000",
         "terminal.foreground": "#d3c6aa",
