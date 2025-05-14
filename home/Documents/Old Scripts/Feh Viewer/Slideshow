@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Set desired window size
+WIDTH=800
+HEIGHT=600
+
+# Check if an argument (file path) is provided
+if [ -z "$1" ]; then
+    echo "No image file provided."
+    exit 1
+fi
+
+# Get the directory of the selected image
+DIR=$(dirname "$1")
+
+# Open the image in feh with:
+# - A black background
+# - Fixed window size
+# -D <number> = time till next image
+# - Scrolling enabled for other images in the folder
+feh --scale-down --auto-zoom --geometry ${WIDTH}x${HEIGHT}+11+6 -D 4 --image-bg black --start-at "$1" "$DIR"

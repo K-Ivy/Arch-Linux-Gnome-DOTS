@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# start -d : skips discord, summons only terminals
+# start -t : skips terminals, summons only discord
+#-------------------------------------------------------
+
+# Settings for Discord Web App:
+
+WINDOW_TITLE_1="Discord"
+DISCORD_URL="https://discord.com/channels/1247393097956982875/1247473703244271688"
+DISCORD_CLASS="WebApp-Discord9196"
+DISCORD_NAME="WebApp-Discord9196"
+DISCORD_X=1401  # X position for Discord window
+DISCORD_Y=80  # Y position for Discord window
+DISCORD_WIDTH=514  # Width for Discord window
+DISCORD_HEIGHT=460  # Height for Discord window
+
+# Check for flags
+SKIP_DISCORD=false
+SKIP_TERMINALS=false
+
+if [[ "$1" == "-d" ]]; then
+    SKIP_DISCORD=true
+elif [[ "$1" == "-t" ]]; then
+    SKIP_TERMINALS=true
+fi
+
+if [[ "$SKIP_DISCORD" == false ]]; then
+    # Launch + Args:
+    chromium --app="$DISCORD_URL" \
+             --class="$DISCORD_CLASS" \
+             --name="$DISCORD_NAME" \
+             --enable-features=NoReferrers \
+             --process-per-site &
+
+    # Wait for window to appear
+    sleep 1
+
+    # Find window by title and resize & move
+    DISCORD_WINDOW_ID=$(wmctrl -l | grep "$WINDOW_TITLE_1" | tail -n 1 | awk '{print $1}')
+
+    if [[ -n "$DISCORD_WINDOW_ID" ]]; then
+        wmctrl -i -r "$DISCORD_WINDOW_ID" -e 0,$DISCORD_X,$DISCORD_Y,$DISCORD_WIDTH,$DISCORD_HEIGHT
+    fi
+fi
+
+#-------------------------------------------------------
+# Settings for Kitty terminal 1:
+
+if [[ "$SKIP_TERMINALS" == false ]]; then
+    COLUMNS_1=68
+    ROWS_1=29
+    X_POS_1=12
+    Y_POS_1=379
+    WINDOW_TITLE_1="Kitty1"
+    BACKGROUND_OPACITY_1=0.2
+
+    kitty --detach \
+          --override initial_window_width=${COLUMNS_1}c \
+          --override initial_window_height=${ROWS_1}c \
+          --override remember_window_size=no \
+          --override hide_window_decorations=yes \
+          --override background_opacity=${BACKGROUND_OPACITY_1} \
+          --title "${WINDOW_TITLE_1}" &
+
+    sleep 0.5
+
+    WINDOW_ID_1=$(wmctrl -l | grep "$WINDOW_TITLE_1" | tail -n 1 | awk '{print $1}')
+    wmctrl -i -r $WINDOW_ID_1 -e 0,$X_POS_1,$Y_POS_1,-1,-1
+
+    #-------------------------------------------------------
+    # Settings for Kitty terminal 2:
+
+    COLUMNS_2=57
+    ROWS_2=24
+    X_POS_2=1401
+    Y_POS_2=545
+    WINDOW_TITLE_2="Kitty2"
+    BACKGROUND_OPACITY_2=0.5
+
+    kitty --detach \
+          --override initial_window_width=${COLUMNS_2}c \
+          --override initial_window_height=${ROWS_2}c \
+          --override remember_window_size=no \
+          --override hide_window_decorations=yes \
+          --override background_opacity=${BACKGROUND_OPACITY_2} \
+          --title "${WINDOW_TITLE_2}" &
+
+    sleep 0.5
+
+    WINDOW_ID_2=$(wmctrl -l | grep "$WINDOW_TITLE_2" | tail -n 1 | awk '{print $1}')
+    wmctrl -i -r $WINDOW_ID_2 -e 0,$X_POS_2,$Y_POS_2,-1,-1
+fi
+
+#-------------------------------------------------------
