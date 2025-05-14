@@ -248,22 +248,519 @@
 </details> 
 
 ---
-
-## Additional Configurations:
-Refer to the detailed setup for:
-- SDDM Theming
-- Dotfiles and Configs
-- Browser Settings (LibreWolf, Zen Browser)
-- Extension Customizations
-- Gnome Theming (Graphite GTK, Gruvbox Icons, Capitaine Cursor)
-
----
-
-
-
-
-
+# Desktop Configurations
+### ∘ Setup Configs
 <details>
-<summary>Boot & Connect to Network</summary>
+<summary>↳ Expand</summary>
+
+- Open Nautilus, press `Ctrl + H` to show hidden files or toggle via settings.
+
+  ⎯ Go to `/home/USER/Templates` and bookmark it.
   
-</details> 
+  > Anything in this path gets added to the "New Document" content menu for fast file creation.
+
+  ⎯ Go to `/home/USER/.config` and bookmark it.
+  
+- Copy contents of `home/Templates/` from GIT REPO to `~/USER/Templates`
+  
+- Copy contents of `.configs/` from GIT REPO to `~/USER/.config/` 
+
+</details>
+
+### ∘ Bashrc Setup + Oh-My-Posh + Apps Folder
+<details>
+<summary>↳ Expand</summary>
+
+- Get `.bashrc` from `home/` in GIT REPO and replace the one in `/home/USER/`:
+  
+  ⎯ **Ensure to update paths**:
+
+    ```bash
+    eval "$(oh-my-posh init bash --config /home/k/.config/ohmyposh/config.json)"
+    export PATH="$PATH:/home/k/Documents/Apps"
+    # For VAAPI
+    export LIBVA_DRIVER_NAME=i965
+    ```
+
+- **Create Apps Directory**:
+  
+  ⎯ `/home/USER/Documents/Apps`
+
+  ⎯ Copy contents from GIT REPO `home/Documents/Apps/` into the created path.
+
+- **Reload Shell**:
+  
+  ⎯ `source ~/.bashrc` or `exec bash`.
+
+</details>
+
+### ∘ Actions-for-Nautilus
+<details>
+<summary>↳ Expand</summary>
+
+- Create directory: `/home/USER/.local/share/actions-for-nautilus` (or run the app).
+
+- Copy contents from GIT REPO `home/~/actions-for-nautilus/` to the created path.
+
+- Restart Nautilus:
+  
+  ⎯ `nautilus -q` in terminal.
+
+</details>
+
+### ∘ Fastfetch
+<details>
+<summary>↳ Expand</summary>
+
+- **Edit GPU Section**:
+  
+  ⎯ Open "config.jsonc" in .config folder and edit "gpu" section. Choose which to use and if
+    text entry, edit it to be correct
+
+</details>
+
+### ∘ Btop
+<details>
+<summary>↳ Expand</summary>
+
+- **Update Desktop File**:
+  
+  ⎯ `sudo nano /usr/share/applications/btop.desktop`
+
+    ```plaintext
+    [Desktop Entry]
+    Type=Application
+    Version=1.0
+    Name=Btop++
+    Comment=Resource Monitor
+    Icon=btop
+    Exec=kitty -e btop
+    Terminal=false
+    Categories=System;Monitor;ConsoleOnly;
+    Keywords=system;process;task
+    ```
+
+  ⎯ `update-desktop-database ~/.local/share/applications`
+
+- **Usage**:
+  
+  ⎯ Press `1` for CPU USAGE, `2` for MEMORY USAGE, and `3` for NET USAGE.
+
+</details>
+
+### ∘ ZED Setup
+<details>
+<summary>↳ Expand</summary>
+
+- **Theme**:
+
+  ⎯ Combined and tweaked the below themes to match Graphite colors and apply small changes:
+  
+    - [Nord Theme](https://zed-themes.com/themes/nord?name=Nord)
+    
+    - [Everforest Dark Hard](https://zed-themes.com/themes/0TAk81yQG0MKIicN_jMRH?name=Everforest%20Dark%20Hard)
+
+  ⎯ Select `Nordforest One` as the theme if it isn't already set.
+
+![image](https://github.com/user-attachments/assets/761fb3a1-3e32-48a2-8566-6ea60415f366)
+
+</details>
+
+### ∘ LibreWolf Browser Setup
+<details>
+<summary>↳ Expand</summary>
+
+- **Firefox Theme Link**: https://addons.mozilla.org/en-US/firefox/addon/graphite-nord/
+
+- **Vertical Tabs:** (about:config)
+  
+  ⎯ `sidebar.revamp` = true
+  
+  ⎯ `sidebar.expandOnHover` = true
+  
+  ⎯ Open 'Sidebar settings' panel & check "Expand sidebar on hover
+  
+  ⎯ `browser.tabs.hoverPreview.enabled` = false (to remove hover card as it is glitchy)
+  
+  ⎯ `sidebar.animation.expand-on-hover.duration-ms` = 100
+
+- **CSS Setup:**
+
+  ⎯ Copy `chrome` folder from GIT REPO `home/~/.librewolf/` to `/home/k/.librewolf/PROFILE/`
+
+  ⎯ Restart browser.
+
+- **CSS Stuff:**
+
+  ⎯ **Credits** that i remember:
+     - https://github.com/rafamadriz/Firefox-Elegant-NordTheme
+     - https://github.com/MrOtherGuy/firefox-csshacks
+     - https://github.com/datguypiko/Firefox-Mod-Blur
+
+  ⎯ MacOS Style Windows Controls + Hamburger also turned into orb:
+
+[Screencast From 2025-05-13 14-06-25.webm](https://github.com/user-attachments/assets/b8eb15c3-e4b6-4616-9f1c-f8d91458089c)
+
+  ⎯ Compact Grid-Style Extensions Menu:
+
+[Screencast From 2025-05-13 14-08-03.webm](https://github.com/user-attachments/assets/7cbe6c08-3d8e-4faa-b051-db15fa34be6e)
+
+  ⎯ Full Width Url Box Breakout:
+
+[Screencast From 2025-05-13 14-14-31.webm](https://github.com/user-attachments/assets/b14a5cb3-d250-4ec3-a455-6e98769b80b9)
+
+  ⎯ Toolbar does not lose opacity when window is inactive & you hover over
+  
+  ⎯ Brought down toolbar menus (not all) so they do not overlap the toolbar
+  
+  ⎯ Removed "Customize Sidebar" button + bring up tools
+  
+  ⎯ Autohide Toolbar + Button Hover Effects
+  
+  ⎯ Tabs brought up to match toolbar button height
+
+- **Quick Preview:**
+
+[Screencast From 2025-05-13 14-46-26.webm](https://github.com/user-attachments/assets/202d86b0-fa94-4d96-9892-c282c9b3142b)
+
+- **LibreWolf Setup**:
+  
+  ⎯ Preferences > Enable: `Allow userChrome.css customization`.
+
+  ⎯ If `Enabled ResistFingerprinting` = `True`, adjust window size (about:config):
+  
+    - `privacy.window.maxInnerWidth` = `800`.
+    
+    - `privacy.window.maxInnerHeight` = `600`.
+
+  ⎯ **Cookie Clear Exceptions**:
+    
+    - https://github.com
+    
+    - https://discord.com
+    
+    - https://mail.google.com
+    
+    - https://www.deviantart.com
+
+    - https://twitch.tv
+    
+    - https://addons.mozilla.org
+    
+    - https://accounts.google.com
+
+  ⎯ Extensions:
+    
+    - `Dark Reader`, `Stylus`, `Tab Session Manager`, `uBlock Origin`, `Auto Tab Discard`.
+    
+    - Stylus styles can be found in the `browser/` folder in the GIT REPO.
+
+</details>
+
+### ∘ Gnome Extension Customizations
+<details>
+<summary>↳ Expand</summary>
+
+- **Open Extension Manager and install:**
+
+    - `DDTerm`, `User Themes`, `Display Adjustment`, `Rounded Window Corners Reborn`, `Custom Command Menu`, `V-Shell`, `Clipboard History`, `Blur My Shell`, `Hide Activities Button`, `Screenshort-cut`.
+
+    - **Of Note**: `Customized Workspaces`, `Fullscreen to New Workspace`.
+
+- **DDTerm**: On-demand Terminal
+  
+  ⎯ **Window:**
+    
+    - Window Size: `100%`
+    
+    - Resizable: `False`
+    
+    - On All Workplaces: `False`
+    
+    - Show Tab Bar: `Never`
+  
+  ⎯ **Terminal:**
+    
+    - Font: `SauceCodePro Nerd Font Medium - 13`
+    
+    - Cursor Shape: `I-Beam`
+    
+    - Background: `#292E38`
+    
+    - Foreground: `#D8E5E5`
+    
+    - Background Opacity: `54%`
+    
+    - Show Scrollbar: `False`.
+
+- **Custom Command Menu**: To put name on toolbar and have easy access to commands
+    
+    - Commands: `----`.
+    
+    - Configuration > Custom Menu Title: Type `Text` > `Name`.
+
+- **Clipboard History**: Quickly see copied content
+    
+    - Window Width: `18`.
+    
+    - Max Items & History Size: `2`.
+    
+    - Adjust other settings as needed.
+
+- **Rounded Window Corners Reborn**: Consistent Borders on everything
+    
+  ⎯ **Main:**
+    
+    - Skip LibAdwaita: `True`.
+    
+    - Skip LibHandy: `True`.
+    
+    - Border Width: `-2`.
+    
+    - Border Color: `#83B9B8`.
+    
+    - Corner Radius: `11`.
+    
+    - Smoothing: `0`.
+  
+  ⎯ **Window Shadow for Focused State:**
+    
+    - Horizontal Offset: `0`.
+    
+    - Vertical Offset: `5`.
+    
+    - Blur Radius: `12`.
+    
+    - Spread Radius: `2.0`.
+    
+    - Opacity: `62`.
+  
+  ⎯ **Window Shadow for Unfocused State:**
+    
+    - Set all options to `0`.
+  
+  ⎯ **Additional:**
+    
+    - Add rounded corners to Kitty Term on Wayland: `True` if needed.
+    
+    - Custom > Add > Window Class: `mpvk` > Bottom & Right Padding: `2` (to fix it's border)
+
+- **Blur My Shell**: Transparency for certain applications. Keep usage on short-term apps for performace
+
+  ⎯ **Note**: Enable `Rounded Corners Reloaded` first and then this extension.
+    
+  ⎯ Remove default pipeline effects.
+    
+  ⎯ Disable blurs for `Panel`, `Overview`, and `Dash`.
+  
+  ⎯ **Applications:**
+    
+    - Sigma: `4`.
+    
+    - Brightness: `1.00`.
+    
+    - Opacity: `226`.
+    
+    - Opaque Focused Window: `False`.
+    
+    - Overview Blur: `False`.
+    
+    - Whitelist Applications: `Nautilus`.
+
+- **V-Shell (Vertical Workspaces)**: Customize Gnome behavior and overview
+  
+  ⎯ **Layout**:
+  
+     - Dash > Position: `Bottom`.
+       
+     - Dash > Center Dash to Workspace: `True`.
+       
+     - Dash > Icon Position: `Start`.
+       
+     - Workspace Thumbnails > Pos/Orientation: `Top | Horizontal`.
+       
+     - Workspace Thumbnails > Window Scale: `12`.
+       
+     - Workspace Thumbnails > App Scale: `14`.
+       
+     - Workspace Preview > Scale: `62`.
+       
+     - Workspace Preview > Spacing: `500`.
+       
+     - App Grid > Center Grid: `True`.
+       
+     - Search View > Center: `True`.
+       
+     - Search View > Always Show: `False`.
+       
+     - Search View > Results Width: `90`.
+       
+     - Workspace Switch Popup > Horizontal Pos: `50`.
+       
+     - Workspace Switch Popup > Vertical Pos: `5`.
+       
+     - Notifications/OSD > Banner: `Top Center`.
+       
+     - Notifications/OSD > Popup: `Top Center`.
+       
+     - Adjust `Secondary Monitor` settings if needed.
+
+  ⎯ **Appearance:**
+
+     - Dash > Icon Size: `64`.
+     
+     - Dash > Style: `Default`.
+     
+     - Dash > Opacity: `60`.
+     
+     - Dash > Radius: `30`.
+     
+     - Dash > App Indicator: `Dot`.
+     
+     - Workspace Thumbnails > Labels: `Disabled`.
+     
+     - Workspace Thumbnails > Wallpaper in Thumbnail: `True`.
+     
+     - Window Preview > Icon Size: `Disable`.
+     
+     - Window Preview > Position / Visibility: `Below Window`.
+     
+     - Workspace Preview > Corner Radius: `42`.
+     
+     - Search > Icon Size: `96`.
+     
+     - Search > Results Rows: `3`.
+     
+     - Search > Highlighting: `Underline`.
+     
+     - Panel > Style: `Transparent`.
+     
+     - Overview Background > Show Wallpaper: `Enable - Fast Blur Transition`.
+     
+     - Overview Background > Brightness (for all): `47`.
+     
+     - Overview Background > Blur (for both): `30`.
+
+  ⎯ **Behavior**:
+
+     - Overview > Escape Key Behavior: `Close Overview`.
+      
+     - Overview > Click Empty Space to Close: `True`.
+      
+     - App Menu > All options: `On`, except `Create Window Thumbnail`.
+      
+     - Workspace Thumbnails > Close Button: `Single Click`.
+      
+     - Workspace Preview > Sort & Initial: `Default`.
+      
+     - Workspace Preview > Height Compensation: `15`.
+      
+     - Window Preview > All actions: `Activate Windows`.
+      
+     - Always Activate: `False`.
+      
+     - Animations > Speed: `108`.
+      
+     - Animations > App Grid: `Disable`.
+      
+     - Animations > Search View: `Disable`.
+      
+     - Animations > Workspace Preview: `Active Workspace Only`.
+      
+     - Workspace Switcher > Wraparound: `True`.
+      
+     - Workspace Switcher > Animation: `Static Background`.
+      
+     - Workspace Switcher > Popup Mode: `Current Monitor`.
+      
+     - Notifications > Attention Handler & Favorites: `Disable`.
+
+  ⎯ **App Grid**:
+
+     - Main App Grid > Icon Size: `96`.
+    
+     - Main App Grid > Columns & Rows: `3`.
+      
+     - Main App Grid > Allow Incomplete Pages: `True`.
+      
+     - App Folders > Icon Size: `96`.
+      
+     - App Folders > Columns & Rows: `3`.
+      
+     - App Folders > Center Open Folders: `True`.
+
+  ⎯ **Modules**:
+    
+     - Disable `Layout`, `Swipe Tracker`.
+
+</details>
+
+### ∘ 13. Gnome Theming
+<details>
+<summary>↳ Expand</summary>
+
+- **Graphite GTK Theme**: Windows and Overall
+  
+  ⎯ Download ZIP: https://github.com/vinceliuice/Graphite-gtk-theme
+  
+  ⎯ Open terminal and CD into the extracted folder.
+    
+    - Now enter: `./install.sh --tweaks normal colorful nord -t teal -c dark -l`.
+
+- **Gruvbox Plus Dark Icons**:
+  
+  ⎯ Download ZIP: https://github.com/SylEleuth/gruvbox-plus-icon-pack
+
+  ⎯ Create an `icons` folder at: `/home/USER/.local/share/icons` & bookmark it.
+    
+    - Copy `Gruvbox-Plus-Dark` and Light variant into the folder.
+    
+  ⎯ Open Terminal & CD into extracted folder: `~/gruvbox-plus-icon-pack-master/scripts`.
+  
+    - `chmod +x folders-color-chooser`.
+      
+    - `./folders-color-chooser -c blue`.
+
+- **Capitaine Cursor**:
+  
+  ⎯ Download ZIP: https://github.com/sainnhe/capitaine-cursors
+  
+  ⎯ Extract and copy "Gruvbox", "Nord", "Palenight" standard variants into `~/.local/share/icons`
+    
+    - **Additional Cursors**: [Catppuccin Cursors](https://github.com/catppuccin/cursors).
+
+- **Apply These**:
+  
+  ⎯ Open *Gnome Tweaks* and select them.
+
+- **"Show Apps" Fix**: If "Show Apps" Button is white & not matching "Gruvbox Plus"
+  
+  ⎯ Open: `/home/USER/.themes/Graphite-teal-Dark-nord/gnome-shell/gnome-shell.css`.
+    
+    - Use Finder & Search ".show-apps" & find the below (Lines 3511 to 3521) & update.
+      
+      ```css
+      #dash .dash-item-container .show-apps .overview-icon,
+      #dash .dash-item-container .overview-tile .overview-icon,
+      #dash .dash-item-container .grid-search-result .overview-icon {
+          color: #ebdbb2;
+      }
+      ```
+    
+    - If other icons packs used later, make sure to change to match.
+
+- **"Show Apps" Icon Size Fix**: Change the "Show Apps" icon itself so it is larger to match
+  
+  ⎯ Go to GIT REPO `icons/` folder:
+    
+    - Choose an adjusted Gruvbox Plus Icon.
+    
+    - Remove `(Option #)` from the name.
+    
+    - Copy to `/home/USER/.local/share/icons/Gruvbox-Plus-Dark/actions/symbolic`.
+
+- **Reload Shell**:
+  
+  ⎯ Press `Alt + F2`, type `r`, and hit Enter.
+
+</details>
