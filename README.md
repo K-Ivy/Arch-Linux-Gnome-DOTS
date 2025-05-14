@@ -695,7 +695,7 @@
 
 </details>
 
-### ∘ 13. Gnome Theming
+### ∘ Gnome Theming
 <details>
 <summary>↳ Expand</summary>
 
