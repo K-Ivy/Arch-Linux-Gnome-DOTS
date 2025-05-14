@@ -1,0 +1,35 @@
+# ███╗   ██╗███████╗████████╗   ███╗   ███╗         -
+# ████╗  ██║██╔════╝╚══██╔══╝   ████╗ ████║         -
+# ██╔██╗ ██║█████╗     ██║█████╗██╔████╔██║         -
+# ██║╚██╗██║██╔══╝     ██║╚════╝██║╚██╔╝██║         -
+# ██║ ╚████║███████╗   ██║      ██║ ╚═╝ ██║         -
+# ╚═╝  ╚═══╝╚══════╝   ╚═╝      ╚═╝     ╚═╝         -
+# ! AFTER CHANGES, FULLY EXIT THE SCRIPT AND RE-ENTER
+# ---------------------------------------------------
+
+netstation="wlan0"
+
+# ---------------------------------------------------
+# ------- Style Configurations for FZF Menus --------
+# ---------------------------------------------------
+
+fzf_opts="--reverse --no-hscroll --no-scrollbar --no-separator --no-info --ansi"
+
+# rounded|sharp|bold|block|thinblock|double|horizontal|vertical|top|bottom|left|right|none
+borderstyle="none"          # Style of the border around fzf menus.
+
+pointer="◆"                 # Pointer symbol for selected entry
+color_pointer="#e6a417"     # Pointer color
+color_border="-1"           # Border color
+color_bg_plus="-1"          # Background color of selected entry
+color_bg="-1"               # Background color of fzf menus
+color_fg_plus="#f5c111"     # Text color of selected entry
+color_fg="#bfd6cc"          # Text color of non-selected entries
+color_hl_plus="#ffb3b3"     # Highlight color of matched text in selected entry
+color_hl="#ffb3b3"          # Highlight color of matched text in the list (from search)
+color_info="-1"             # Text color of entry count
+color_prompt="#8ab5d9"      # Text color of the prompt line
+
+######################################################
+# @K-Ivy -
+######################################################

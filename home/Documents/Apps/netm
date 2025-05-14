@@ -1,0 +1,148 @@
+#!/bin/bash
+# Network Management using IWCTL and FZF:
+### SETUPS #########################################################
+
+MISDEPS=()
+for d in iwctl fzf; do command -v "$d" &>/dev/null || MISDEPS+=("$d"); done
+[ ${#MISDEPS[@]} -gt 0 ] && { echo -e "MISSING DEPENDS: ${MISDEPS[*]}"; exit 1; }
+
+CONFIG_FILE="/home/k/Documents/Apps/netm-configs/config"
+[[ -f $CONFIG_FILE ]] || { echo "CONFIG not found. Create or move it to the correct location. Exiting..."; exit 1; }
+source "$CONFIG_FILE"
+
+### VARIABLES ######################################################
+
+station=${netstation}
+
+fzf_options="${fzf_opts} --pointer=$pointer --border=$borderstyle --color=fg:${color_fg},bg:${color_bg},fg+:${color_fg_plus},bg+:${color_bg_plus},hl:${color_hl},hl+:${color_hl_plus},info:${color_info},prompt:${color_prompt},pointer:${color_pointer},border:${color_border}"
+
+# Retrieve the current SSID & clean for prompt
+cssid=$(iwctl station "$station" show \
+  | sed -nE 's/^[[:space:]]*Connected network (.+)$/\1/p' \
+  | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' \
+  | { IFS= read -r ss; echo "${ss:-None}"; }
+)
+
+# Retrieve known SSIDs & clean for prompt.
+knssid=$(iwctl known-networks list)
+
+devinfolist() {
+  iwctl device list \
+    | sed -r -e 's/\x1B\[[0-9;]*[mK]//g' -e '/^\s*$/d' \
+    | awk '
+      BEGIN {
+        OFS = "\n";
+        teal256 = "\033[38;5;151m";
+        reset   = "\033[0m";
+      }
+      NR > 3 && $0 !~ /^-+$/ {
+          name = toupper($1);
+          powered = toupper($3);
+          print name teal256 " • " powered " • • " $2 reset;
+          print "├─ Mode: " teal256 $5 reset;
+          print "└─ Adapter: " teal256 $4 reset;
+      }
+    '
+}
+
+knownnetlist() {
+  iwctl known-networks list \
+    | sed -r -e 's/\x1B\[[0-9;]*[mK]//g' -e '/^\s*$/d' \
+    | awk '
+      BEGIN {
+        OFS = "\n";
+        teal256 = "\033[38;5;151m";
+        reset = "\033[0m";
+      }
+      NR > 3 && $0 !~ /^-+$/ {
+        name = toupper($1);
+        security = toupper($2);
+        last_connected = ($3 == "" ? "Never" : gensub(/  +/, " ", "g", substr($0, index($0, $3))));
+        print name teal256 " • • • " security reset;
+        print "└─ Connected: " teal256 last_connected reset;
+      }
+    '
+}
+
+### NETWORK LIST ######################################################
+
+networks() {
+  while true; do
+    clear
+    # Get and form a cleaned network list
+    netlist=$(iwctl station "$station" get-networks \
+      | sed -r -e 's/\x1B\[[0-9;]*[mK]//g' -e '5,$!d' -e '$d' \
+      | awk '{ ssid = ($1 == ">" ? $2 : $1)
+               sig  = $NF
+               printf "%-25s    %s\n", ssid, sig
+            }'
+      )
+
+    # Count the number of networks in the list to mimic fzf-info line
+    netcount=$(printf "%s\n" "$netlist" | wc -l)
+
+    netdisplay=$(printf "%s\n" "$netlist" \
+      $'\e[38;5;66m─────────────────────────────────' $'NETWORKS..................SIGNALS' $'────────────── Info ─────────────\e[0m' \
+      | fzf --prompt="  $station > $cssid > " \
+            --header=$'\e[38;5;109m'"${netcount}"$'\e[0m '$( ((netcount>9)) \
+                && printf '%b' $'\e[38;5;66m──────────────────────────────\e[0m' \
+                || printf '%b' $'\e[38;5;66m───────────────────────────────\e[0m' ) \
+            $fzf_options
+)
+
+    [[ -z "$netdisplay" ]] && { sleep 0.5; return; }
+
+    [[ "$netdisplay" == "─────────────────────────────────" || "$netdisplay" == "NETWORKS..................SIGNALS" ]] && continue
+
+    [[ "$netdisplay" == "────────────── Info ─────────────" ]] && {
+      while true; do
+        nvinfods=$(printf "%s\n" "$(devinfolist)" \
+            $'\e[38;5;66mSAVED PASSWORDS ─────────────────\e[0m' \
+            "$(knownnetlist)"  \
+            $'\e[38;5;66m────────────\e[0m \e[38;5;109mGo Back\e[0m \e[38;5;66m────────────\e[0m' \
+            | fzf --prompt="  $station > $cssid > " \
+                  --header=$'\e[38;5;66mDEVICES ─────────────────────────\e[0m' \
+            $fzf_options)
+            # if they hit ESC (empty) OR picked the “FF…” line, break out
+            [[ -z "$nvinfods" || "$nvinfods" == $'──────────── Go Back ────────────' ]] \
+              && { sleep 0.5; break; }
+          done
+          continue
+        }
+
+        while true; do
+          clear
+          netopts=$(
+            printf "%s\n" "$netdisplay" \
+              $'\e[38;5;66m─────────────────────────────────' \
+              $'CONNECT TO NETWORK' \
+              $'DISCONNECT FROM NETWORK' \
+              $'\e[38;5;66m────────────\e[0m \e[38;5;109mGo Back\e[0m \e[38;5;66m────────────\e[0m' \
+            | fzf --prompt="  Select an option > " $fzf_options
+          )
+
+          # Break the loop and go back to the previous menu if no option is selected or "Go Back" is chosen
+          [[ -z "$netopts" || "$netopts" == $'──────────── Go Back ────────────' ]] && { sleep 0.5; break; }
+
+          # Extract $ssid from the selected network in netdisplay (trim spaces and remove signal markers)
+          ssid=$(echo "$netdisplay" | awk '{print $1}' | xargs)
+
+          [[ "$netopts" == "CONNECT TO NETWORK" ]] && {
+            read -s -p $'\n Enter password for the network: ' password
+            [[ -z "$password" ]] && { echo -e "\n No password entered. Going back..."; sleep 0.5; continue; }
+            iwctl station "$station" connect "$ssid" --passphrase "$password" && { echo -e "\n Connected to $ssid."; sleep 1; continue; }
+            echo -e "\n Failed to connect to $ssid. Going back..."; sleep 0.5; continue;
+          }
+
+          [[ "$netopts" == "DISCONNECT FROM NETWORK" ]] && {
+            iwctl station "$station" disconnect && { echo -e "\n Disconnected from the network."; sleep 1; continue; }
+            echo -e "\n Failed to disconnect. Going back..."; sleep 0.5; continue;
+          }
+        done
+
+
+    done
+  }
+
+### MAIN ###########################################################
+networks
