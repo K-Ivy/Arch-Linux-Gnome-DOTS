@@ -1,0 +1,58 @@
+mouse = true
+hide_blocked_users = true
+messages_limit = 255
+editor = "nano"
+timestamps = true
+timestamps_format = "3:04PM"
+show_attachment_links = true
+
+[keys]
+focus_guilds_tree = "Ctrl+G"
+focus_messages_text = "Ctrl+T"
+focus_message_input = "Ctrl+P"
+toggle_guilds_tree = "Ctrl+B"
+select_previous = "Rune[k]"
+select_next = "Rune[j]"
+select_first = "Rune[g]"
+select_last = "Rune[G]"
+logout = "Ctrl+D"
+quit = "Ctrl+W"
+
+[keys.guilds_tree]
+select_current = "Enter"
+
+[keys.messages_text]
+select_reply = "Rune[s]"
+select_pin = "Rune[p]"
+reply = "Rune[r]"
+reply_mention = "Rune[R]"
+delete = "Rune[d]"
+yank = "Rune[y]"
+open = "Rune[o]"
+
+[keys.message_input]
+send = "Enter"
+editor = "Ctrl+E"
+cancel = "Esc"
+
+[theme]
+border = true
+border_color = "#005fc1"
+border_padding = [0, 0, 1, 1]
+title_color = "#ffb900"
+background_color = "default"
+
+[theme.guilds_tree]
+auto_expand_folders = false
+channel_color = "white"
+graphics = false
+guild_color = "#75ff00"
+private_channel_color = "#a7ff5c"
+
+[theme.messages_text]
+reply_indicator = "╭ "
+author_color = "orange"
+content_color = "white"
+emoji_color = "#f9ff00"
+link_color = "#0000ee"
+attachment_color = "#ff00a1"

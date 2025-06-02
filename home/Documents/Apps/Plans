@@ -1,0 +1,12 @@
+
+> Ability to browse twitch via provided catergory, term, or top streamers to some degree.
+
+> Option to retrieve streamers from follow list and put them in the streamers-list or to a new list.
+
+> Quick lang option (no translations, just ability to easily do so).
+
+> Option to append manually entered streamer to the streamers-list if they are valid.
+
+> Option to launch a stream (and if possible vods) in the browser in popout mode so it's only the stream, no site, no chat. This is so browser adblock extensions work if wanted for a important stream.
+
+  (https://player.twitch.tv/?channel=STREAMER&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=auto&volume=1.0)

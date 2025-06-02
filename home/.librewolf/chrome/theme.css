@@ -1,6 +1,4 @@
-/* ============================================================================
- * Theme the scrollbar
- * ========================================================================= */
+/* scrollbar */
 
 * {
   scrollbar-color: rgba(30, 144, 255, 0.7) rgba(0, 0, 0, 0) !important;
@@ -18,7 +16,7 @@ tooltip {
 }
 
 
-/* C O N T E X T   M E N U */
+/* Context menus */
 
 /*  affects normal stuff FIX IT */
 menupopup :-moz-any(menu, menuitem) {
