@@ -846,29 +846,97 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
     
     - **Additional Cursors**: [Catppuccin Cursors](https://github.com/catppuccin/cursors).
 
-- **Apply These**:
+- **Apply**:
   
-  ⎯ Open *Gnome Tweaks* and select them.
+  ⎯ Open *Gnome Tweaks* and select.
 
-- **"Show Apps" Fix**: If "Show Apps" Button is white & not matching "Gruvbox Plus"
-  
-  ⎯ Open: `/home/USER/.themes/Graphite-teal-Dark-nord/gnome-shell/gnome-shell.css`.
-    
-    - Use Finder & Search ".show-apps" & find the below (Lines 3511 to 3521) & update.
+
+
+
+- **Open** *`/home/USER/.themes/Graphite-teal-Dark-nord/gnome-shell/gnome-shell.css`* **to change some things:**
+
+  ⎯ The updated gnome-shell css can be found in repo's `home/.themes/Graphite-teal-Dark-nord/gnome-shell/gnome-shell.css`.
+
+    - **0. Add to the top:**
+
+  ```css
+   /* Top Bar push */
+   #panel {
+     margin-top: 3px;
+   }
+
+   /* Top Bar content push */
+   #panel .panel-button {
+     margin-right: 6px !important;
+     margin-left: 5px !important;
+   }
+
+   /* Defaults */
+   #panel Gjs_ui_panelMenu_PanelMenuButton.panel-button,
+   #panel Gjs_ui_panelMenu_PanelMenuButton.panel-button:hover {
+     color: #9dbdb8;
+     border-radius: 13px !important;
+   }
+
+   /* Custom Command Menu extension */
+   #panel Gjs_custom-command-list_storageb_github_com_extension_CommandMenu.panel-button,
+   #panel Gjs_custom-command-list_storageb_github_com_extension_CommandMenu.panel-button:hover {
+     color: #c89dbf;
+   }
+  ```
+
+    - **1. Search "Top Bar"** in the editor and change background color to match wallpaper:
+
+  ```css
+   #panel {
+     ...
+     background-color: #272838; 
+     ...
+   }
+  ```
+
+    - **2. Scroll down** and change button hpadding:
+
+  ```css
+   #panel .panel-button {
+     -natural-hpadding: 8px;
+     -minimum-hpadding: 8px;
+     ...
+   }
+  ```
+
+    - **3. Change the border radius** of the clock/date display:
+
+  ```css
+   #panel .panel-button.clock-display .clock {
+     ...
+     border-radius: 13px;
+	 ...
+   }
+  ```
+
+    - **4. Change the default hover color**
+
+  ```css
+   #panel .panel-button:hover {
+     color: white -> #9dbdb8;
+	 ...
+   }
+  ```
+
+    - **5. "Show Apps" Fix**: If "Show Apps" Button is white & not matching "Gruvbox Plus" (Prev Setup). Use Finder & Search ".show-apps" & find the below & update.
       
-      ```css
-      #dash .dash-item-container .show-apps .overview-icon,
-      #dash .dash-item-container .overview-tile .overview-icon,
-      #dash .dash-item-container .grid-search-result .overview-icon {
-          color: #ebdbb2;
-      }
-      ```
-    
-    - If other icons packs used later, make sure to change to match.
+  ```css
+   #dash .dash-item-container .show-apps .overview-icon,
+   #dash .dash-item-container .overview-tile .overview-icon,
+   #dash .dash-item-container .grid-search-result .overview-icon {
+     color: #ebdbb2;
+   }
+  ```
 
-- **"Show Apps" Icon Size Fix**: Change the "Show Apps" icon itself so it is larger to match
+    - **6. "Show Apps" Icon Size Fix**: Change the "Show Apps" icon itself so it is larger to match
   
-  ⎯ Go to GIT REPO `icons/` folder:
+    - Go to repo's `assets/` folder:
     
     - Choose an adjusted Gruvbox Plus Icon.
     
@@ -876,8 +944,6 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
     
     - Copy to `/home/USER/.local/share/icons/Gruvbox-Plus-Dark/actions/symbolic`.
 
-- **Reload Shell**:
-  
-  ⎯ Press `Alt + F2`, type `r`, and hit Enter.
+    - **Reload Shell**: press `Alt + F2`, & send `r`.
 
 </details>
