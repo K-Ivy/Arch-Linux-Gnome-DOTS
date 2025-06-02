@@ -1,4 +1,14 @@
+This Repo is mainly a reference point (and storage) for me, but you may find something useful/nice.
+
+Current Demo (6/1/2025) - *Extension setup and general setup will be found below*
+
+https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
+
+---
+  
 # Arch Linux Full Install Guide (Minimal Gnome)
+
+
 ### ∘ 1. Boot & Connect to Network
 <details>
 <summary>↳ Expand</summary>
@@ -248,6 +258,7 @@
 </details> 
 
 ---
+  
 # Desktop Configurations
 ### ∘ Setup Configs
 <details>
@@ -271,26 +282,25 @@
 <details>
 <summary>↳ Expand</summary>
 
-- Get `.bashrc` from `home/` in GIT REPO and replace the one in `/home/USER/`:
+- Get `.bashrc` from `home/` in the repo and update contents of the one in `/home/USER/` or replace:
   
   ⎯ **Ensure to update paths**:
 
     ```bash
     eval "$(oh-my-posh init bash --config /home/k/.config/ohmyposh/config.json)"
     export PATH="$PATH:/home/k/Documents/Apps"
-    # For VAAPI
-    export LIBVA_DRIVER_NAME=i965
+    ...
     ```
 
 - **Create Apps Directory**:
   
   ⎯ `/home/USER/Documents/Apps`
 
-  ⎯ Copy contents from GIT REPO `home/Documents/Apps/` into the created path.
+  ⎯ Copy contents from repo's `home/Documents/Apps/` into the created path or replace.
 
 - **Reload Shell**:
   
-  ⎯ `source ~/.bashrc` or `exec bash`.
+  ⎯ `source ~/.bashrc`
 
 </details>
 
@@ -300,7 +310,7 @@
 
 - Create directory: `/home/USER/.local/share/actions-for-nautilus` (or run the app).
 
-- Copy contents from GIT REPO `home/~/actions-for-nautilus/` to the created path.
+- Copy contents from repo's `home/.local/share/actions-for-nautilus` to the created path or replace.
 
 - Restart Nautilus:
   
@@ -323,7 +333,7 @@
 <details>
 <summary>↳ Expand</summary>
 
-- **Update Desktop File**:
+- **Update Desktop File** if needed.
   
   ⎯ `sudo nano /usr/share/applications/btop.desktop`
 
@@ -366,7 +376,7 @@
 
 </details>
 
-### ∘ LibreWolf Browser Setup
+### ∘ LibreWolf Browser Setup (Moved to Zen Browser)
 <details>
 <summary>↳ Expand</summary>
 
@@ -386,7 +396,7 @@
 
 - **CSS Setup:**
 
-  ⎯ Copy `chrome` folder from GIT REPO `home/~/.librewolf/` to `/home/k/.librewolf/PROFILE/`
+  ⎯ Copy `chrome` folder from repo's `home/.librewolf/` to `/home/USER/.librewolf/PROFILE/`
 
   ⎯ Restart browser.
 
@@ -423,7 +433,7 @@
 
 [Screencast From 2025-05-13 14-46-26.webm](https://github.com/user-attachments/assets/202d86b0-fa94-4d96-9892-c282c9b3142b)
 
-- **LibreWolf Setup**:
+- **Other Settings Setup**:
   
   ⎯ Preferences > Enable: `Allow userChrome.css customization`.
 
@@ -451,9 +461,61 @@
 
   ⎯ Extensions:
     
-    - `Dark Reader`, `Stylus`, `Tab Session Manager`, `uBlock Origin`, `Auto Tab Discard`.
+    - `Dark Reader`, `Stylus/Stylebot`, `Tab Session Manager`, `uBlock Origin`, `Auto Tab Discard`.
+
+</details>
+
+### ∘ Zen Browser Setup
+<details>
+<summary>↳ Expand</summary>
+
+- **Firefox Theme Link**: https://addons.mozilla.org/en-US/firefox/addon/graphite-nord/
+
+- **CSS Setup:**
+
+  ⎯ Copy `chrome` folder from repo's `home/.zen/` to `/home/USER/.zen/PROFILE/`
+
+  ⎯ Restart browser.
+
+- **Settings Setup**:
+  
+  ⎯ About:config:
+
+    - `network.prefetch-next` = `false`.
+
+    - `browser.sessionstore.interval` = `1500000`
+
+  ⎯ **Cookie Clear Exceptions**:
     
-    - Stylus styles can be found in the `browser/` folder in the GIT REPO.
+    - https://github.com
+    
+    - https://discord.com
+    
+    - https://mail.google.com
+    
+    - https://www.deviantart.com
+
+    - https://twitch.tv
+    
+    - https://addons.mozilla.org
+    
+    - https://accounts.google.com
+
+  ⎯ Extensions:
+    
+    - `Stylebot`, `Tab Session Manager`, `uBlock Origin`.
+
+  ⎯ Zen Mods:
+    
+    - Sidebar Expand on Hover
+
+  ⎯ Stylebot Theme will be in repo's `stylus-and-stylebot-themes/`
+
+    - Previews of Completed/WIP Tweaks:
+
+    - Discord - Tweaked https://github.com/Roboron3042/Cyberpunk-Neon & https://userstyles.world/api/style/4877.user.css
+  
+  [Screencast From 2025-06-02 01-23-56.webm](https://github.com/user-attachments/assets/b415c086-6777-49cc-be5c-bd20ca8be602)
 
 </details>
 
@@ -463,10 +525,14 @@
 
 - **Open Extension Manager and install:**
 
-    - `DDTerm`, `User Themes`, `Display Adjustment`, `Rounded Window Corners Reborn`, `Custom Command Menu`, `V-Shell`, `Clipboard History`, `Blur My Shell`, `Hide Activities Button`, `Screenshort-cut`.
+    - `DDTerm`, `User Themes`, `Display Adjustment`, `Rounded Window Corners Reborn`, `Custom Command Menu`, `V-Shell`, `App Icons Taskbar`, `App Menu is back`, `Burn my Windows`, `Screenshort-cut`, `Rocketbar`, `Space Bar`, `Transparent Window Moving`, `Truly Maximized Windows`, `Blur My Shell`.
 
-    - **Of Note**: `Customized Workspaces`, `Fullscreen to New Workspace`.
+    - **Of Note/Alts**: `Customized Workspaces`, `Fullscreen to New Workspace`, `Clipboard History`, `Dash to Panel`, `Date Menu Formatter`, `Forge`, `Mouse Tail`, `PaperWM`, `Start Overlay in Application View`, `Task Up UltraLite`
 
+- **App Icons Taskbar**: Dash on panel + other adjustments
+  
+  ⎯ As it has opt to export settings, find in repo's `exported-extension-settings`.
+    
 - **DDTerm**: On-demand Terminal
   
   ⎯ **Window:**
@@ -495,17 +561,22 @@
 
 - **Custom Command Menu**: To put name on toolbar and have easy access to commands
     
-    - Commands: `----`.
+    - Exported commands in repo's `home/commands.ini`.
     
-    - Configuration > Custom Menu Title: Type `Text` > `Name`.
+    - Configuration > Custom Menu Title: Type `Icon` > `pan-down-symbolic`.
 
-- **Clipboard History**: Quickly see copied content
+- **Rocketbar**: Right click in overview opens applications view
+  
+  ⎯ **General:**
     
-    - Window Width: `18`.
+    - Taskbar Enabled: `False`
     
-    - Max Items & History Size: `2`.
+    - Notification Counter: `False`
     
-    - Adjust other settings as needed.
+  
+  ⎯ **Behavior:**
+    
+    - Everything off except Overview option
 
 - **Rounded Window Corners Reborn**: Consistent Borders on everything
     
@@ -545,6 +616,46 @@
     
     - Custom > Add > Window Class: `mpvk` > Bottom & Right Padding: `2` (to fix it's border)
 
+- **Space Bar**: Workspaces buttons on panel
+    
+  ⎯ **Behavior:**
+    
+    - Indicator Style: `Workspace Bar` -> `Use Custom Label` & Unnamed Label: `Space ((Number))`
+    
+    - Position: `Left`.
+    
+    - Switch: `Over Indicator`.
+    
+    - Always Show Numbers: `False`.
+    
+    - Show Empty Workspaces: `True`.
+    
+    - Toggle Overview: `False`.
+  
+  ⎯ **Appearance:**
+    
+    - Padding & Margin: `0`.
+
+    - Border Radius + Width & Vertical Padding: `0`.
+
+    - Horizontal Padding: `13`.
+    
+    - Background & Border Colors: `#000000`.
+    
+    - Font Size: `10`.
+    
+    - Font Weight: `Semi-Bold`.
+  
+    - Active Text Color: `#9DBDB8`.
+ 
+    - Inactive Text Color: `#7F9EA0`.
+
+    - Empty Text Color: `#7F9EA0`.
+
+- **Transparent Window Moving**: Visual
+    
+  ⎯ Opacity: `230`.
+
 - **Blur My Shell**: Transparency for certain applications. Keep usage on short-term apps for performace
 
   ⎯ **Note**: Enable `Rounded Corners Reloaded` first and then this extension.
@@ -567,15 +678,23 @@
     
     - Whitelist Applications: `Nautilus`.
 
-- **V-Shell (Vertical Workspaces)**: Customize Gnome behavior and overview
+- **Burn my Windows**: Window close and appear animation
   
+  ⎯ Settings are within repo's `.config/`
+
+- **V-Shell (Vertical Workspaces)**: Customize Gnome behavior and overview
+
+  ⎯ **Modules**:
+    
+     - Disable `Layout`, `Swipe Tracker`, `Dash`, `Workspace Switcher Popup`.
+
   ⎯ **Layout**:
   
-     - Dash > Position: `Bottom`.
+     - \Dash > Position: `Bottom`.
        
-     - Dash > Center Dash to Workspace: `True`.
+     - \Dash > Center Dash to Workspace: `True`.
        
-     - Dash > Icon Position: `Start`.
+     - \Dash > Icon Position: `Start`.
        
      - Workspace Thumbnails > Pos/Orientation: `Top | Horizontal`.
        
@@ -595,9 +714,9 @@
        
      - Search View > Results Width: `90`.
        
-     - Workspace Switch Popup > Horizontal Pos: `50`.
+     - \Workspace Switch Popup > Horizontal Pos: `50`.
        
-     - Workspace Switch Popup > Vertical Pos: `5`.
+     - \Workspace Switch Popup > Vertical Pos: `5`.
        
      - Notifications/OSD > Banner: `Top Center`.
        
@@ -607,15 +726,15 @@
 
   ⎯ **Appearance:**
 
-     - Dash > Icon Size: `64`.
+     - \Dash > Icon Size: `64`.
      
-     - Dash > Style: `Default`.
+     - \Dash > Style: `Default`.
      
-     - Dash > Opacity: `60`.
+     - \Dash > Opacity: `60`.
      
-     - Dash > Radius: `30`.
+     - \Dash > Radius: `30`.
      
-     - Dash > App Indicator: `Dot`.
+     - \Dash > App Indicator: `Dot`.
      
      - Workspace Thumbnails > Labels: `Disabled`.
      
@@ -643,9 +762,11 @@
 
   ⎯ **Behavior**:
 
-     - Overview > Escape Key Behavior: `Close Overview`.
+     - Overview > Escape Key Behavior: `Default`.
       
-     - Overview > Click Empty Space to Close: `True`.
+     - Overview > Click Empty Space to Close: `False`.
+
+     - Overlay Key > Double-Press Action: `Disable`.
       
      - App Menu > All options: `On`, except `Create Window Thumbnail`.
       
@@ -688,10 +809,6 @@
      - App Folders > Columns & Rows: `3`.
       
      - App Folders > Center Open Folders: `True`.
-
-  ⎯ **Modules**:
-    
-     - Disable `Layout`, `Swipe Tracker`.
 
 </details>
 
