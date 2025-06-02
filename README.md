@@ -1,4 +1,14 @@
+This Repo is mainly a reference point (and storage) for me, but you may find something useful/nice.
+
+Current Demo as (6/1/2025)
+
+https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
+
+---
+  
 # Arch Linux Full Install Guide (Minimal Gnome)
+
+
 ### ∘ 1. Boot & Connect to Network
 <details>
 <summary>↳ Expand</summary>
@@ -248,6 +258,9 @@
 </details> 
 
 ---
+
+- **The below is outdated atm. (extensions needed for current setup and paths)**
+  
 # Desktop Configurations
 ### ∘ Setup Configs
 <details>
