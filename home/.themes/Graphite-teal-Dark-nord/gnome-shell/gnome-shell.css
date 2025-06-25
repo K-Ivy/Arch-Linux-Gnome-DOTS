@@ -1350,7 +1350,7 @@ StEntry StLabel.hint-text, .search-entry StLabel.hint-text {
   border: none !important;
   box-shadow: none !important;
   font-size: 10pt;
-  background-color: #272838;
+  background-color: transparent;
   height: 32px;
 }
 
