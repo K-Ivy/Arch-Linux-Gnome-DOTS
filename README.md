@@ -222,7 +222,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 - **Gnome + DM** ⎯ `sudo pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility loupe sddm`
 
-- **Functions** ⎯ `sudo pacman -S wget jq wmctrl wpa_supplicant smartmontools gstreamer gst-plugins-good gst-plugin-pipewire wireless_tools gtk-engine-murrine sassc xclip vte3 libhandy zenity libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools nautilus-image-converter nautilus-code-git oh-my-posh cpufetch fastfetch ffmpegthumbnailer`
+- **Functions** ⎯ `sudo pacman -S wget jq wmctrl wpa_supplicant smartmontools gstreamer gst-plugins-good gst-plugin-pipewire wireless_tools gtk-engine-murrine sassc xclip vte3 libhandy zenity libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools nautilus-image-converter nautilus-code-git oh-my-posh cpufetch fastfetch ffmpegthumbnailer feh`
 
 - **Apps** ⎯ `sudo pacman -S kitty extension-manager zed deskflow mpv librewolf gcolor3 pamac localsend btop twitch-tui gimp`
 

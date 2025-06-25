@@ -27,6 +27,21 @@
       "label": "Copy Name",
       "command_line": "echo -n %B | xclip -f -selection primary | xclip -selection clipboard",
       "use_shell": true
+    },
+    {
+      "type": "command",
+      "label": "Feh Viewer",
+      "command_line": "/home/k/Documents/Apps/feh-viewer/Feh-View %F",
+      "use_shell": true,
+      "mimetypes": ["image/*"]
+    },
+    {
+      "type": "command",
+      "label": "Feh Slideshow",
+      "command_line": "/home/k/Documents/Apps/feh-viewer/Feh-Slideshow \"%f\"",
+      "use_shell": true,
+      "max_items": 1,
+      "mimetypes": ["image/*"]
     }
   ],
   "debug": false
