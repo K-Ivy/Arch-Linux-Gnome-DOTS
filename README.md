@@ -131,7 +131,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
   ⎯ `git clone https://github.com/K-Ivy/Arch-Linux-Gnome-DOTS.git`
 
-  ⎯ `cp -r plymouth/catppuccin-frappe-twd /usr/share/themes/plymouth/catppuccin-frappe-twd`
+  ⎯ `cp -r plymouth/catppuccin-frappe-twd /usr/share/plymouth/catppuccin-frappe-twd`
 
   ⎯ `sudo plymouth-set-default-theme -R catppuccin-frappe-twd`
 
@@ -229,7 +229,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 - **Fonts** ⎯ `sudo pacman -S noto-fonts noto-fonts-emoji ttf-roboto ttf-sourcecodepro-nerd`
 
-- **SDDM SETUP:**
+- **SDDM SETUP:** (Theme config in repo)
 
   ⎯ Theme: `https://github.com/Keyitdev/sddm-astronaut-theme`
 
@@ -251,6 +251,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
     ```
 
   ⎯ Enable: `systemctl enable sddm`
+
   ⎯ UFW first setup:
      - sudo ufw default deny incoming
      - sudo ufw default allow outgoing
