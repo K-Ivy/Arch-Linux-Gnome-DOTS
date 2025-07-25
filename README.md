@@ -8,7 +8,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 # Arch Linux Install (Minimal Gnome)
 
-### ∘ 1. Boot & Connect to Network
+### 1. Boot & Connect to Network
 <details>
 <summary>↳ Expand</summary>
 
@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 </details>
 
-### ∘ 2. Base with Archinstall
+### 2. Base with Archinstall
 <details>
 <summary>↳ Expand</summary>
 
@@ -62,7 +62,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 </details>
 
-### ∘ 3. Setups in Chroot
+### 3. Setups in Chroot
 <details>
 <summary>↳ Expand</summary>
 
@@ -195,7 +195,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 </details>
 
-### ∘ 4. Install Packages + Setup DM:
+### 4. Install Packages + Setup DM:
 <details>
 <summary>↳ Expand</summary>
 
@@ -251,14 +251,15 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
     ```
 
   ⎯ Enable: `systemctl enable sddm`
-  ⎯ UFW first setup:
+
+- UFW first setup:
      - sudo ufw default deny incoming
      - sudo ufw default allow outgoing
      - sudo ufw enable
 
 - **Reboot. All setup.**
 
-Note, can disable:
+Note opt:
 
 - systemctl list-unit-files --state=enabled
 
