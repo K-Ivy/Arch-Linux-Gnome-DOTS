@@ -1,7 +1,7 @@
 Personal dots/info for own reference/storage
 
 <details>
-<summary><strong>Base Setup Install Guide </strong></summary>
+<summary><strong>Base Setup Install </strong></summary>
 
 ### 1. Boot & Connect to Network
 <details>
@@ -62,6 +62,12 @@ Personal dots/info for own reference/storage
 <summary>↳ Expand</summary>
 
 - Enter: `pacman -S nano git`
+
+- For the rest on the setup below, instead of manual, run the Guided Setup Script:
+
+- `https://github.com/K-Ivy/Arch-Linux-Gnome-DOTS.git /tmp/dots && cd /tmp/dots/extra && bash ag-install.sh`
+
+---
 
 - Configure/Setup Systemd (Archinstall may not fully do so) + Pre Plymouth Setup:
 
