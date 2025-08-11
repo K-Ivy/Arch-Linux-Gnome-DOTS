@@ -1,6 +1,14 @@
 Personal dots/info for own reference/storage
 
 <details>
+<summary><strong>Previews </strong></summary>
+Quick Preview of latest (8/11/25):
+
+[Screencast From 2025-08-11 14-25-33.webm](https://github.com/user-attachments/assets/588d7d37-685f-4763-880d-d22ea02ec244)
+
+</details>
+
+<details>
 <summary><strong>Base Setup Install </strong></summary>
 
 ### 1. Boot & Connect to Network
