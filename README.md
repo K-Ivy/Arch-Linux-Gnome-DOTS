@@ -1,4 +1,4 @@
-Personal Dots/info for own reference/storage
+Personal dots/info for own reference/storage
 
 <details>
 <summary><strong>Base Setup Install Guide </strong></summary>
@@ -239,7 +239,7 @@ Personal Dots/info for own reference/storage
 
 
 <details>
-<summary><h2>Additional Config Notes</h2></summary>
+<summary><strong>Additional Config Notes</strong></summary>
 
 ### ∘ Fastfetch
 <details>
