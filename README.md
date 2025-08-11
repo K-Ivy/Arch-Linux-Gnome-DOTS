@@ -3,8 +3,6 @@ Personal dots/info for own reference/storage
 <details>
 <summary><strong>Base Setup Install Guide </strong></summary>
 
-<br>
-
 ### 1. Boot & Connect to Network
 <details>
 <summary>↳ Expand</summary>
