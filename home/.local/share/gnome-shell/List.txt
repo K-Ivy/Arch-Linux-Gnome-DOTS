@@ -1,0 +1,49 @@
+dconf dump /org/gnome/shell/extensions/ > ~/gnome-extension-settings.dconf
+
+**Main:**
+- Apps Icons Taskbar
+- Burn My Windows
+- Caffeine
+- Dash To Panel
+- Disable Menu Switching
+- Display Adjustment
+- Extension List
+- Flippery Panel Favorites
+- Fullscreen to Empty Workspace2
+- Quick Settings Tweaks
+- Rocketbar
+- Rounded Window Corners Reborn
+- Spacebar
+- Top Bar Organizer
+- Transparent Window Moving
+- V-Shell
+- User Themes
+
+**Extra:**
+- Looking Glass Button
+- Blur My Shell
+- Coverflow Alt-Tab
+- Edit Desktop Files
+- ddterm
+- Forge
+- Useless Gaps
+
+**Of Note:**
+- AppIndicator and KStatusNotifierItem Support
+- Status Icons
+- Tray Icons Reloaded
+- Application Tabs
+- Custom Command Menu
+- Custom Command Toggle
+- Favorite Apps Menu
+- Hide Accessibility Menu
+- Hide Screen Sharing
+- Launcher
+- Lineup
+- Media Controls
+- No Titlebar When Maximized
+- QuickSettings Indicator Visibility Tool
+- Toggler
+- Show Desktop Button
+- Truly Maximized Windows
+- Undecorated Windows

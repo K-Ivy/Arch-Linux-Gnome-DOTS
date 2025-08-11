@@ -1,0 +1,18 @@
+/* -------------------------------------------------------- */
+/* Oop. lost full css file                                  */
+/* -------------------------------------------------------- */
+
+:root {
+  --zen-main-browser-background: #313744 !important;
+}
+
+/* No tab tint */
+.browserStack > browser {
+  background-color: transparent !important;
+}
+
+/* Remove the shadow around the web page */
+hbox.browserSidebarContainer,
+#zen-tabbox-wrapper {
+  box-shadow: none !important;
+}

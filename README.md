@@ -1,12 +1,9 @@
-This Repo is mainly a reference point (and storage)
+Personal Dots/info for own reference/storage
 
-(6/1/2025):
+<details>
+<summary><strong>Base Setup Install Guide </strong></summary>
 
-https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
-
----
-
-# Arch Linux Install (Minimal Gnome)
+<br>
 
 ### 1. Boot & Connect to Network
 <details>
@@ -56,7 +53,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
   ⎯ Audio (`Pipewire`),
 
-  ⎯ Network Config (`Copy to Install` or `Network Manager`),
+  ⎯ Network Config (`Copy to Install`),
 
   ⎯ After installation is done, select `Yes` and CHROOT in.
 
@@ -131,7 +128,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
   ⎯ `git clone https://github.com/K-Ivy/Arch-Linux-Gnome-DOTS.git`
 
-  ⎯ `cp -r plymouth/catppuccin-frappe-twd /usr/share/plymouth/catppuccin-frappe-twd`
+  ⎯ `cp -r home/usr/share/plymouth/catppuccin-frappe-twd /usr/share/plymouth/catppuccin-frappe-twd`
 
   ⎯ `sudo plymouth-set-default-theme -R catppuccin-frappe-twd`
 
@@ -143,7 +140,7 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
   ⎯ `efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /EFI/systemd/systemd-bootx64.efi`
 
-  **This video shows for GRUB:** [YouTube Video](https://www.youtube.com/watch?v=mWl4P6DOt9M)
+  **GRUB:** [YouTube Video](https://www.youtube.com/watch?v=mWl4P6DOt9M)
 
 - `sudo mkinitcpio -P`
 
@@ -221,36 +218,13 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 - **Gnome + DM** ⎯ `sudo pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility sddm`
 
-- **Functions** ⎯ `sudo pacman -S wget jq wmctrl wpa_supplicant smartmontools gstreamer gst-plugins-good gst-plugin-pipewire wireless_tools gtk-engine-murrine sassc xclip vte3 libhandy zenity libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools nautilus-image-converter oh-my-posh cpufetch fastfetch ffmpegthumbnailer feh gufw`
+- **Functions** ⎯ `sudo pacman -S wget jq wmctrl iwd smartmontools gstreamer gst-plugins-good gst-plugin-pipewire wireless_tools gtk-engine-murrine sassc vte3 libhandy libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools nautilus-image-converter oh-my-posh cpufetch fastfetch ffmpegthumbnailer feh gufw`
 
-- **Apps** ⎯ `sudo pacman -S kitty extension-manager zed deskflow mpv microsoft-edge-stable-bin gcolor3 pamac localsend btop twitch-tui gimp`
+- **Apps** ⎯ `sudo pacman -S kitty extension-manager zed deskflow mpv zen-browser-bin pamac localsend btop twitch-tui gimp geary`
 
 - **+ Via Yay** ⎯ `yay -S yt-x gpufetch-nocuda-git actions-for-nautilus ddcutil-service`
 
 - **Fonts** ⎯ `sudo pacman -S noto-fonts noto-fonts-emoji ttf-roboto ttf-sourcecodepro-nerd`
-
-- **SDDM SETUP:** (Theme config in repo)
-
-  ⎯ Theme: `https://github.com/Keyitdev/sddm-astronaut-theme`
-
-  ⎯ Install: `sudo pacman -S sddm-astronaut-theme` (chaotic-aur)
-
-  ⎯ Conf: `sudo nano /etc/sddm.conf`
-
-    ```plaintext
-    -- sddm.conf --
-    [Theme]
-    Current=sddm-astronaut-theme
-    ```
-
-  ⎯ Set theme: `sudo nano /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop`
-
-    ```plaintext
-    -- metadata.desktop --
-    ConfigFile=Themes/pixel_sakura.conf
-    ```
-
-  ⎯ Enable: `systemctl enable sddm`
 
 - UFW first setup:
      - sudo ufw default deny incoming
@@ -259,74 +233,13 @@ https://github.com/user-attachments/assets/371de060-3936-4880-9df7-4d4dde15ae9b
 
 - **Reboot. All setup.**
 
-Note opt:
-
-- systemctl list-unit-files --state=enabled
-
-- sudo systemctl disable --now remote-fs.target
+</details>
 
 </details>
 
----
 
-# Desktop Configurations
-### ∘ Setup Configs
 <details>
-<summary>↳ Expand</summary>
-
-- Open Nautilus, press `Ctrl + H` to show hidden files or toggle via settings.
-
-  ⎯ Go to `/home/USER/Templates` and bookmark it.
-
-  > Anything in this path gets added to the "New Document" content menu for fast file creation.
-
-  ⎯ Go to `/home/USER/.config` and bookmark it.
-
-- Copy contents of `home/Templates/` from GIT REPO to `~/USER/Templates`
-
-- Copy contents of `.configs/` from GIT REPO to `~/USER/.config/`
-
-</details>
-
-### ∘ Bashrc Setup + Oh-My-Posh + Apps Folder
-<details>
-<summary>↳ Expand</summary>
-
-- Get `.bashrc` from `home/` in the repo and update contents of the one in `/home/USER/` or replace:
-
-  ⎯ **Ensure to update paths**:
-
-    ```bash
-    eval "$(oh-my-posh init bash --config /home/k/.config/ohmyposh/config.json)"
-    export PATH="$PATH:/home/k/Documents/Apps"
-    ...
-    ```
-
-- **Create Apps Directory**:
-
-  ⎯ `/home/USER/Documents/Apps`
-
-  ⎯ Copy contents from repo's `home/Documents/Apps/` into the created path or replace.
-
-- **Reload Shell**:
-
-  ⎯ `source ~/.bashrc`
-
-</details>
-
-### ∘ Actions-for-Nautilus
-<details>
-<summary>↳ Expand</summary>
-
-- Create directory: `/home/USER/.local/share/actions-for-nautilus` (or run the app).
-
-- Copy contents from repo's `home/.local/share/actions-for-nautilus` to the created path or replace.
-
-- Restart Nautilus:
-
-  ⎯ `nautilus -q` in terminal.
-
-</details>
+<summary><h2>Additional Config Notes</h2></summary>
 
 ### ∘ Fastfetch
 <details>
@@ -343,292 +256,58 @@ Note opt:
 <details>
 <summary>↳ Expand</summary>
 
-- **Open Extension Manager and install:**
-
-    - `DDTerm`, `User Themes`, `Display Adjustment`, `Rounded Window Corners Reborn`, `Custom Command Menu`, `V-Shell`, `App Icons Taskbar`, `App Menu is back`, `Burn my Windows`, `Screenshort-cut`, `Rocketbar`, `Space Bar`, `Transparent Window Moving`, `Truly Maximized Windows`, `Blur My Shell`.
-
-    - **Of Note/Alts**: `Customized Workspaces`, `Fullscreen to New Workspace`, `Clipboard History`, `Dash to Panel`, `Date Menu Formatter`, `Forge`, `Mouse Tail`, `PaperWM`, `Start Overlay in Application View`, `Task Up UltraLite`
-
-- **App Icons Taskbar**: Dash on panel + other adjustments
-
-  ⎯ As it has opt to export settings, find in repo's `exported-extension-settings`.
-
-- **DDTerm**: On-demand Terminal
-
-  ⎯ **Window:**
-
-    - Window Size: `100%`
-
-    - Resizable: `False`
-
-    - On All Workplaces: `False`
-
-    - Show Tab Bar: `Never`
-
-  ⎯ **Terminal:**
-
-    - Font: `SauceCodePro Nerd Font Medium - 13`
-
-    - Cursor Shape: `I-Beam`
-
-    - Background: `#292E38`
-
-    - Foreground: `#D8E5E5`
-
-    - Background Opacity: `54%`
-
-    - Show Scrollbar: `False`.
-
-- **Custom Command Menu**: To put name on toolbar and have easy access to commands
-
-    - Exported commands in repo's `home/commands.ini`.
-
-    - Configuration > Custom Menu Title: Type `Icon` > `pan-down-symbolic`.
-
-- **Rocketbar**: Right click in overview opens applications view
-
-  ⎯ **General:**
-
-    - Taskbar Enabled: `False`
-
-    - Notification Counter: `False`
-
-
-  ⎯ **Behavior:**
-
-    - Everything off except Overview option
-
-- **Rounded Window Corners Reborn**: Consistent Borders on everything
-
-  ⎯ **Main:**
-
-    - Skip LibAdwaita: `True`.
-
-    - Skip LibHandy: `True`.
-
-    - Border Width: `-2`.
-
-    - Border Color: `#83B9B8`.
-
-    - Corner Radius: `11`.
-
-    - Smoothing: `0`.
-
-  ⎯ **Window Shadow for Focused State:**
-
-    - Horizontal Offset: `0`.
-
-    - Vertical Offset: `5`.
-
-    - Blur Radius: `12`.
-
-    - Spread Radius: `2.0`.
-
-    - Opacity: `62`.
-
-  ⎯ **Window Shadow for Unfocused State:**
-
-    - Set all options to `0`.
-
-  ⎯ **Additional:**
-
-    - Add rounded corners to Kitty Term on Wayland: `True` if needed.
-
-    - Custom > Add > Window Class: `mpvk` > Bottom & Right Padding: `2` (to fix it's border)
-
-- **Space Bar**: Workspaces buttons on panel
-
-  ⎯ **Behavior:**
-
-    - Indicator Style: `Workspace Bar` -> `Use Custom Label` & Unnamed Label: `Space ((Number))`
-
-    - Position: `Left`.
-
-    - Switch: `Over Indicator`.
-
-    - Always Show Numbers: `False`.
-
-    - Show Empty Workspaces: `True`.
-
-    - Toggle Overview: `False`.
-
-  ⎯ **Appearance:**
-
-    - Padding & Margin: `0`.
-
-    - Border Radius + Width & Vertical Padding: `0`.
-
-    - Horizontal Padding: `13`.
-
-    - Background & Border Colors: `#000000`.
-
-    - Font Size: `10`.
-
-    - Font Weight: `Semi-Bold`.
-
-    - Active Text Color: `#9DBDB8`.
-
-    - Inactive Text Color: `#7F9EA0`.
-
-    - Empty Text Color: `#7F9EA0`.
-
-- **Transparent Window Moving**: Visual
-
-  ⎯ Opacity: `230`.
-
-- **Blur My Shell**: Transparency for certain applications. Keep usage on short-term apps for performace
-
-  ⎯ **Note**: Enable `Rounded Corners Reloaded` first and then this extension.
-
-  ⎯ Remove default pipeline effects.
-
-  ⎯ Disable blurs for `Panel`, `Overview`, and `Dash`.
-
-  ⎯ **Applications:**
-
-    - Sigma: `4`.
-
-    - Brightness: `1.00`.
-
-    - Opacity: `226`.
-
-    - Opaque Focused Window: `False`.
-
-    - Overview Blur: `False`.
-
-    - Whitelist Applications: `Nautilus`.
-
-- **Burn my Windows**: Window close and appear animation
-
-  ⎯ Settings are within repo's `.config/`
-
-- **V-Shell (Vertical Workspaces)**: Customize Gnome behavior and overview
-
-  ⎯ **Modules**:
-
-     - Disable `Layout`, `Swipe Tracker`, `Dash`, `Workspace Switcher Popup`.
-
-  ⎯ **Layout**:
-
-     - \Dash > Position: `Bottom`.
-
-     - \Dash > Center Dash to Workspace: `True`.
-
-     - \Dash > Icon Position: `Start`.
-
-     - Workspace Thumbnails > Pos/Orientation: `Top | Horizontal`.
-
-     - Workspace Thumbnails > Window Scale: `12`.
-
-     - Workspace Thumbnails > App Scale: `14`.
-
-     - Workspace Preview > Scale: `62`.
-
-     - Workspace Preview > Spacing: `500`.
-
-     - App Grid > Center Grid: `True`.
-
-     - Search View > Center: `True`.
-
-     - Search View > Always Show: `False`.
-
-     - Search View > Results Width: `90`.
-
-     - \Workspace Switch Popup > Horizontal Pos: `50`.
-
-     - \Workspace Switch Popup > Vertical Pos: `5`.
-
-     - Notifications/OSD > Banner: `Top Center`.
-
-     - Notifications/OSD > Popup: `Top Center`.
-
-     - Adjust `Secondary Monitor` settings if needed.
-
-  ⎯ **Appearance:**
-
-     - \Dash > Icon Size: `64`.
-
-     - \Dash > Style: `Default`.
-
-     - \Dash > Opacity: `60`.
-
-     - \Dash > Radius: `30`.
-
-     - \Dash > App Indicator: `Dot`.
-
-     - Workspace Thumbnails > Labels: `Disabled`.
-
-     - Workspace Thumbnails > Wallpaper in Thumbnail: `True`.
-
-     - Window Preview > Icon Size: `Disable`.
-
-     - Window Preview > Position / Visibility: `Below Window`.
-
-     - Workspace Preview > Corner Radius: `42`.
-
-     - Search > Icon Size: `96`.
-
-     - Search > Results Rows: `3`.
-
-     - Search > Highlighting: `Underline`.
-
-     - Panel > Style: `Same As Desktop`.
-
-     - Overview Background > Show Wallpaper: `Enable - Fast Blur Transition`.
-
-     - Overview Background > Brightness (for all): `47`.
-
-     - Overview Background > Blur (for both): `30`.
-
-  ⎯ **Behavior**:
-
-     - Overview > Escape Key Behavior: `Default`.
-
-     - Overview > Click Empty Space to Close: `False`.
-
-     - Overlay Key > Double-Press Action: `Disable`.
-
-     - App Menu > All options: `On`, except `Create Window Thumbnail`.
-
-     - Workspace Thumbnails > Close Button: `Single Click`.
-
-     - Workspace Preview > Sort & Initial: `Default`.
-
-     - Workspace Preview > Height Compensation: `15`.
-
-     - Window Preview > All actions: `Activate Windows`.
-
-     - Always Activate: `False`.
-
-     - Animations > Speed: `108`.
-
-     - Animations > App Grid: `Disable`.
-
-     - Animations > Search View: `Disable`.
-
-     - Animations > Workspace Preview: `Active Workspace Only`.
-
-     - Workspace Switcher > Wraparound: `True`.
-
-     - Workspace Switcher > Animation: `Static Background`.
-
-     - Workspace Switcher > Popup Mode: `Current Monitor`.
-
-     - Notifications > Attention Handler & Favorites: `Disable`.
-
-  ⎯ **App Grid**:
-
-     - Main App Grid > Icon Size: `96`.
-
-     - Main App Grid > Columns & Rows: `3`.
-
-     - Main App Grid > Allow Incomplete Pages: `True`.
-
-     - App Folders > Icon Size: `96`.
-
-     - App Folders > Columns & Rows: `3`.
-
-     - App Folders > Center Open Folders: `True`.
+- List and settings backups are in /home/.local/share/gnome-shell
+
+**Main:**
+
+- Apps Icons Taskbar
+- Burn My Windows
+- Caffeine
+- Dash To Panel
+- Disable Menu Switching
+- Display Adjustment
+- Extension List
+- Flippery Panel Favorites
+- Fullscreen to Empty Workspace2
+- Quick Settings Tweaks
+- Rocketbar
+- Rounded Window Corners Reborn
+- Spacebar
+- Top Bar Organizer
+- Transparent Window Moving
+- V-Shell
+- User Themes
+
+**Extra:**
+
+- Looking Glass Button
+- Blur My Shell
+- Coverflow Alt-Tab
+- Edit Desktop Files
+- ddterm
+- Forge
+- Useless Gaps
+
+**Of Note:**
+
+- AppIndicator and KStatusNotifierItem Support
+- Status Icons
+- Tray Icons Reloaded
+- Application Tabs
+- Custom Command Menu
+- Custom Command Toggle
+- Favorite Apps Menu
+- Hide Accessibility Menu
+- Hide Screen Sharing
+- Launcher
+- Lineup
+- Media Controls
+- No Titlebar When Maximized
+- QuickSettings Indicator Visibility Tool
+- Toggler
+- Show Desktop Button
+- Truly Maximized Windows
+- Undecorated Windows
 
 </details>
 
@@ -636,13 +315,15 @@ Note opt:
 <details>
 <summary>↳ Expand</summary>
 
-- **Graphite GTK Theme**: Windows and Overall
+- **Windows and Overall**:
 
-  ⎯ Download ZIP: https://github.com/vinceliuice/Graphite-gtk-theme
+  ⎯ Download ZIP: https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme
 
   ⎯ Open terminal and CD into the extracted folder.
 
-    - Now enter: `./install.sh --tweaks normal colorful nord -t teal -c dark -l`.
+    - Now enter: `./install.sh -n "evernordic" --tweaks macos float outline -c dark`.
+
+  ⎯ Once installed, replace with the gnome-shell.css in `/home/.themes/Evernordic-Dark/gnome-shell`. If original is updated and current here outdated, replace as needed (insteuctions within the gnome-shell.css)
 
 - **Gruvbox Plus Dark Icons**:
 
@@ -670,97 +351,6 @@ Note opt:
 
   ⎯ Open *Gnome Tweaks* and select.
 
-- **Open** *`/home/USER/.themes/Graphite-teal-Dark-nord/gnome-shell/gnome-shell.css`* **to change some things:**
-
-  ⎯ The updated gnome-shell css can be found in repo's `home/.themes/Graphite-teal-Dark-nord/gnome-shell/gnome-shell.css`.
-
-    - **0. Add to the top:**
-
-  ```css
-   /* Top Bar push */
-   #panel {
-     margin-top: 3px;
-   }
-
-   /* Top Bar content push */
-   #panel .panel-button {
-     margin-right: 6px !important;
-     margin-left: 5px !important;
-   }
-
-   /* Defaults */
-   #panel Gjs_ui_panelMenu_PanelMenuButton.panel-button,
-   #panel Gjs_ui_panelMenu_PanelMenuButton.panel-button:hover {
-     color: #9dbdb8;
-     border-radius: 13px !important;
-   }
-
-   /* Custom Command Menu extension */
-   #panel Gjs_custom-command-list_storageb_github_com_extension_CommandMenu.panel-button,
-   #panel Gjs_custom-command-list_storageb_github_com_extension_CommandMenu.panel-button:hover {
-     color: #c89dbf;
-   }
-  ```
-
-    - **1. Search "Top Bar"** in the editor and change background color to match wallpaper:
-
-  ```css
-   #panel {
-     ...
-     background-color: #272838;
-     ...
-   }
-  ```
-
-    - **2. Scroll down** and change button hpadding:
-
-  ```css
-   #panel .panel-button {
-     -natural-hpadding: 8px;
-     -minimum-hpadding: 8px;
-     ...
-   }
-  ```
-
-    - **3. Change the border radius** of the clock/date display:
-
-  ```css
-   #panel .panel-button.clock-display .clock {
-     ...
-     border-radius: 13px;
-	 ...
-   }
-  ```
-
-    - **4. Change the default hover color**
-
-  ```css
-   #panel .panel-button:hover {
-     color: white -> #9dbdb8;
-	 ...
-   }
-  ```
-
-    - **5. "Show Apps" Fix**: If "Show Apps" Button is white & not matching "Gruvbox Plus" (Prev Setup). Use Finder & Search ".show-apps" & find the below & update.
-
-  ```css
-   #dash .dash-item-container .show-apps .overview-icon,
-   #dash .dash-item-container .overview-tile .overview-icon,
-   #dash .dash-item-container .grid-search-result .overview-icon {
-     color: #ebdbb2;
-   }
-  ```
-
-    - **6. "Show Apps" Icon Size Fix**: Change the "Show Apps" icon itself so it is larger to match
-
-    - Go to repo's `assets/` folder:
-
-    - Choose an adjusted Gruvbox Plus Icon.
-
-    - Remove `(Option #)` from the name.
-
-    - Copy to `/home/USER/.local/share/icons/Gruvbox-Plus-Dark/actions/symbolic`.
-
-    - **Reload Shell**: press `Alt + F2`, & send `r`.
+</details>
 
 </details>

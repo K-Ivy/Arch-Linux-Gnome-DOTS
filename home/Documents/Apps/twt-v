@@ -1,22 +1,24 @@
 #!/bin/bash
-#V.1.0
+# https://github.com/K-Ivy/Twitch-Term/tree/main
 
 STREAMERS_LIST="/home/k/Documents/Apps/twt-v-configs/streamers-list"
 CONFIG_FILE="/home/k/Documents/Apps/twt-v-configs/config"
 
-###SETUPS##########################################################
+#############################################################
 
 MISDEPS=()
 for d in curl jq fzf streamlink; do command -v "$d" &>/dev/null || MISDEPS+=("$d"); done
 [ ${#MISDEPS[@]} -gt 0 ] && { echo -e "MISSING DEPENDS: ${MISDEPS[*]}"; exit 1; }
 
-[[ -f $CONFIG_FILE ]] || { echo "CONFIG not found. Create or move it to the correct location. Exiting..."; exit 1; }
+[[ -f $CONFIG_FILE ]] || { echo "CONFIG not found. Please retrieve it from the repository. Exiting..."; exit 1; }
 
 source "$CONFIG_FILE"
 
 CREDCHECK=$(curl -s -H "Authorization: Bearer $access_token" "https://id.twitch.tv/oauth2/validate")
 CREDVD=$(echo "$CREDCHECK" | jq -r '.client_id != null')
-[[ "$CREDVD" == "true" ]] || { echo "ACCESS TOKEN missing or invalid. Make sure it is correct or refresh it. Exiting..."; exit 1; }
+[[ "$CREDVD" == "true" ]] || { echo "Exiting... ACCESS TOKEN missing or invalid. Make sure it is correct or refresh it from here: https://dev.twitch.tv/console/apps/create"; exit 1; }
+
+#############################################################
 
 STREAMERS=()
 declare -A STREAMER_QUALITIES
@@ -25,8 +27,6 @@ while IFS='|' read -r streamer quality || [ -n "$streamer" ]; do
   STREAMERS+=("$streamer")
   STREAMER_QUALITIES["$streamer"]="$quality"
 done < "$STREAMERS_LIST"
-
-#---VARIABLES----------------------------------------------------#
 
 fzf_options="--reverse --no-hscroll --no-scrollbar --no-info --pointer=$pointer --border=$borderstyle --color=fg:${color_fg},bg:${color_bg},fg+:${color_fg_plus},bg+:${color_bg_plus},hl:${color_hl},hl+:${color_hl_plus},info:${color_info},prompt:${color_prompt},pointer:${color_pointer},border:${color_border}"
 

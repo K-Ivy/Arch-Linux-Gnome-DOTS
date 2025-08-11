@@ -4,7 +4,6 @@
 # ░░░░░██║░░░░░████╔═████║░░░░░██║░░░╚════╝░╚████╔╝░░░
 # ░░░░░██║░░░░░╚██╔╝░╚██╔╝░░░░░██║░░░░░░░░░░░╚██╔╝░░░░
 # ░░░░░╚═╝░░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░░░░░░░░░░╚═╝░░░░░
-# https://github.com/K-Ivy/Twitch-Term?tab=readme-ov-file
 # ! AFTER CHANGES, FULLY EXIT THE SCRIPT AND RE-ENTER
 ######################################################
 
@@ -19,7 +18,7 @@ access_token=""
 # Default quality to be used if none is specified for a streamer
 # > 2160, 1440, 1080, 720, 540, 480, 360, 240, 160, audio_only
 
-default_quality="720"
+default_quality="160"
 
 # Player. Change player args as needed for non MPV
 
@@ -102,6 +101,6 @@ color_hl="#ffb3b3"             # Highlight color of matched text in the list (fr
 color_info="#bfd6c0"           # Text color of info line (entry count)
 color_prompt="#8ab5d9"         # Text color of the prompt lines (ex: main menu)
 
-#########################################################
+######################################################
 # @K-Ivy - https://github.com/K-Ivy/Twitch-Term/tree/main
-#########################################################
+######################################################
