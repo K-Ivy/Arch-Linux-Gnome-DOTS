@@ -1,7 +1,5 @@
 #!/bin/bash
 
-SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-
 confirm() {
     read -rp "$1? (y/n): " choice
     case "$choice" in
@@ -68,7 +66,7 @@ EOF
 title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /initramfs-linux.img
-options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4 quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3
+options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4
 EOF
         nano "/boot/loader/entries/arch.conf"
     fi
@@ -82,25 +80,6 @@ initrd  /initramfs-linux.img
 options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4
 EOF
         nano "/boot/loader/entries/arch-fallback.conf"
-    fi
-
-    if confirm "Edit mkinitcpio.conf for plymouth"; then
-        echo "# HOOKS: base systemd autodetect microcode modconf kms keyboard keymap plymouth block filesystems"
-        pause
-        nano "/etc/mkinitcpio.conf"
-    fi
-
-    if confirm "Install plymouth"; then
-        pacman -S plymouth
-    fi
-
-    if confirm "Copy plymouth theme from repo to system location"; then
-        cp -r "$SCRIPT_DIR/../home/usr/share/plymouth/catppuccin-frappe-twd" \
-              "/usr/share/plymouth/catppuccin-frappe-twd"
-    fi
-
-    if confirm "Set the plymouth theme"; then
-        plymouth-set-default-theme -R "catppuccin-frappe-twd"
     fi
 
     if confirm "List block devices"; then
@@ -120,8 +99,9 @@ EOF
         systemctl enable "systemd-boot-update.service"
     fi
 
-    if confirm "Reboot now"; then
-        reboot
+    if confirm "Done"; then
+    echo "> You are inside chroot. exit chroot and reboot"
+    exit 0
     fi
 
 # STAGE 2
@@ -152,7 +132,7 @@ elif [[ "$stage" == "2" ]]; then
         $SUDO pacman-key --lsign-key 3056513887B78AEB
         $SUDO pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst"
         $SUDO pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
-        cat <<'EOF' >> "/etc/pacman.conf"
+        $SUDO tee -a /etc/pacman.conf > /dev/null <<'EOF'
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOF
@@ -163,8 +143,8 @@ EOF
         $SUDO pacman -Syu yay
     fi
 
-    if confirm "Install GNOME Packages"; then
-        $SUDO pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility
+    if confirm "Install GNOME Packages & DM"; then
+        $SUDO pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility emptty
     fi
 
     if confirm "Install Function Packages"; then
@@ -190,7 +170,13 @@ EOF
         $SUDO ufw enable
     fi
 
-    if confirm "Reboot now"; then
+    if confirm "Enable DM Service and Enter Config"; then
+        $SUDO systemctl enable --now emptty.service
+        pause
+        $SUDO nano /etc/emptty/conf
+    fi
+
+    if confirm "Reboot"; then
         reboot
     fi
 fi
