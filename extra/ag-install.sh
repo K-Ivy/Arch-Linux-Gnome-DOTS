@@ -178,10 +178,10 @@ EOF
         $SUDO ufw enable
     fi
 
-    if confirm "Enable DM Service and Enter Config"; then
-        $SUDO systemctl enable --now emptty.service
-        pause
+    if confirm "Open DM Config and Start Service"; then
         $SUDO nano /etc/emptty/conf
+        pause
+        $SUDO systemctl enable --now emptty.service
     fi
 
     if confirm "Reboot"; then
