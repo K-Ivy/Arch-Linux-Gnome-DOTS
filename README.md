@@ -71,13 +71,13 @@ Quick Preview of latest (8/11/25):
 
 - Enter: `pacman -S nano git`
 
-- For the rest on the setup below, instead of manual, run the Guided Setup Script:
+- For the rest on the setup below, wip guided setup to avoid having to type:
 
-- `https://github.com/K-Ivy/Arch-Linux-Gnome-DOTS.git /tmp/dots && cd /tmp/dots/extra && bash ag-install.sh`
+- `git clone https://github.com/K-Ivy/Arch-Linux-Gnome-DOTS.git /tmp/dots && cd /tmp/dots/extra && bash ag-install.sh`
 
 ---
 
-- Configure/Setup Systemd (Archinstall may not fully do so) + Pre Plymouth Setup:
+- Configure/Setup Systemd (Archinstall may not fully do so):
 
   ⎯ Check entries: `bootctl status`
 
@@ -111,7 +111,7 @@ Quick Preview of latest (8/11/25):
     title   Arch Linux
     linux   /vmlinuz-linux
     initrd  /initramfs-linux.img
-    options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4 quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3
+    options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4
 
     -- arch-fallback.conf --
     title   Arch Fallback
@@ -120,39 +120,15 @@ Quick Preview of latest (8/11/25):
     options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4
     ```
 
-  ⎯ **Options are for "silent boot"** ([Arch Wiki - Silent Boot](https://wiki.archlinux.org/title/Silent_boot))
-
-- Modify `mkinitcpio.conf` (silent boot + plymouth opts):
-
-  ⎯ `nano /etc/mkinitcpio.conf`
-
-  ⎯ Replace `udev` with `systemd`, remove `fsck` & add `plymouth` in HOOKS:
-
-    ```plaintext
-    HOOKS=(base systemd autodetect microcode modconf kms keyboard keymap plymouth block filesystems)
-    ```
-
-- Install Plymouth & Theme ([Plymouth Theme](https://github.com/catppuccin/plymouth)):
-
-  ⎯ `sudo pacman -S plymouth`
-
-  ⎯ `cd /tmp`
-
-  ⎯ `git clone https://github.com/K-Ivy/Arch-Linux-Gnome-DOTS.git`
-
-  ⎯ `cp -r home/usr/share/plymouth/catppuccin-frappe-twd /usr/share/plymouth/catppuccin-frappe-twd`
-
-  ⎯ `sudo plymouth-set-default-theme -R catppuccin-frappe-twd`
-
 - Create the boot entry to finish:
 
-  ⎯ **Note**: Replace `--part` with the partition containing the EFI (/boot marked)
+  ⎯ **Note**: `--part` number is the partition containing the EFI (/boot marked)
 
   ⎯ `lsblk`
 
   ⎯ `efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /EFI/systemd/systemd-bootx64.efi`
 
-  **GRUB:** [YouTube Video](https://www.youtube.com/watch?v=mWl4P6DOt9M)
+       - Grub note for future reference: 1. pacman -S grub efibootmgr dosfstools mtools |  2. grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB | grub-mkconfig -o /boot/grub/grub.cfg
 
 - `sudo mkinitcpio -P`
 
@@ -164,7 +140,7 @@ Quick Preview of latest (8/11/25):
 
 </details>
 
-**▰ Alt method to connect to a network after reboot (if needed):**
+**Alt method to connect to a network**
 <details>
 <summary>↳ Expand</summary>
 
@@ -176,11 +152,11 @@ Quick Preview of latest (8/11/25):
 
 </details>
 
-**▰ Manual Chroot Guide (if needed):**
+**Manual Chroot Guide:**
 <details>
 <summary>↳ Expand</summary>
 
-- Boot back into the live environment using the USB.
+- Boot back into the live environment using USB.
 
   ⎯ Once loaded, check partitions: `lsblk`
 
@@ -228,22 +204,22 @@ Quick Preview of latest (8/11/25):
 
   ⎯ `sudo pacman -Syu yay`
 
-- **Gnome + DM** ⎯ `sudo pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility sddm`
+- **Gnome + DM** ⎯ `sudo pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility emptty`
 
-- **Functions** ⎯ `sudo pacman -S wget jq wmctrl iwd smartmontools gstreamer gst-plugins-good gst-plugin-pipewire wireless_tools gtk-engine-murrine sassc vte3 libhandy libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools nautilus-image-converter oh-my-posh cpufetch fastfetch ffmpegthumbnailer feh gufw`
+- **Functions** ⎯ `sudo pacman -S wget jq wmctrl iwd smartmontools gstreamer gst-plugins-good gst-plugin-pipewire gtk-engine-murrine sassc vte3 libhandy libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools oh-my-posh ffmpegthumbnailer feh gufw`
+
+       - **Via Yay** ⎯ `yay -S actions-for-nautilus ddcutil-service`
 
 - **Apps** ⎯ `sudo pacman -S kitty extension-manager zed deskflow mpv zen-browser-bin pamac localsend btop twitch-tui gimp geary`
 
-- **+ Via Yay** ⎯ `yay -S yt-x gpufetch-nocuda-git actions-for-nautilus ddcutil-service`
-
 - **Fonts** ⎯ `sudo pacman -S noto-fonts noto-fonts-emoji ttf-roboto ttf-sourcecodepro-nerd`
 
-- UFW first setup:
+- UFW setup:
      - sudo ufw default deny incoming
      - sudo ufw default allow outgoing
      - sudo ufw enable
 
-- **Reboot. All setup.**
+- Reboot.
 
 </details>
 
@@ -259,8 +235,7 @@ Quick Preview of latest (8/11/25):
 
 - **Edit GPU Section**:
 
-  ⎯ Open "config.jsonc" in .config folder and edit "gpu" section. Choose which to use and if
-    text entry, edit it to be correct
+  ⎯ Open "config.jsonc" in .config folder and edit "gpu" section. Choose which to use and if text entry, edit it to be correct
 
 </details>
 
