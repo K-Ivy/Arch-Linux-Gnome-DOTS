@@ -71,6 +71,10 @@ EOF
         nano "/boot/loader/entries/arch.conf"
     fi
 
+    if confirm "Open arch.conf"; then
+        nano "/boot/loader/entries/arch.conf"
+    fi
+
     if confirm "Append template to arch-fallback.conf"; then
         cat <<'EOF' >> "/boot/loader/entries/arch-fallback.conf"
 # -- arch-fallback.conf --
@@ -79,6 +83,10 @@ linux   /vmlinuz-linux
 initrd  /initramfs-linux.img
 options root=UUID=xx-xx-xx-xx-xx zswap.enabled=0 rw rootfstype=ext4
 EOF
+        nano "/boot/loader/entries/arch-fallback.conf"
+    fi
+
+    if confirm "Open arch-fallback.conf"; then
         nano "/boot/loader/entries/arch-fallback.conf"
     fi
 
