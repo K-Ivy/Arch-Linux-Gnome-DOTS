@@ -239,7 +239,7 @@ Quick Preview of latest (8/11/25):
 
 </details>
 
-### ∘ Gnome Extension Customizations
+### ∘ Gnome Extensions
 <details>
 <summary>↳ Expand</summary>
 
