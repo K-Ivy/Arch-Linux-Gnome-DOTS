@@ -17,27 +17,27 @@ Quick Preview of latest (8/11/25):
 
 - Enter: `iwctl`
 
-  ⎯ `device list`
+  - `device list`
 
 - Power on devices if not on:
 
-  ⎯ `device DEVICE set-property powered on`
+  - `device DEVICE set-property powered on`
 
-  ⎯ `adapter ADAPTER set-property powered on`
+  - `adapter ADAPTER set-property powered on`
 
 - If the device is still not powered on:
 
-  ⎯ `rfkill unblock DEVICE`
+  - `rfkill unblock DEVICE`
 
 - Get Networks and Connect:
 
-  ⎯ `station NAME scan` (this will not output anything)
+  - `station NAME scan` (this will not output anything)
 
-  ⎯ `station NAME get-networks`
+  - `station NAME get-networks`
 
-  ⎯ `station NAME connect MyWiFiHere-2G`
+  - `station NAME connect MyWiFiHere-2G`
 
-  ⎯ Enter password & type: `exit`
+  - Enter password & type: `exit`
 
 - Test: `ping -c 4 google.com`
 
@@ -49,19 +49,19 @@ Quick Preview of latest (8/11/25):
 
 - Enter: `archinstall`
 
-  ⎯ Configure options. Main:
+  - Configure options. Main:
 
-  ⎯ Disk Config (`Best Effort > Ext4 > Separate /home`),
+  - Disk Config (`Best Effort > Ext4 > Separate /home`),
 
-  ⎯ Bootloader (`Systemd`),
+  - Bootloader (`Systemd`),
 
-  ⎯ Profile (`Xorg + Drivers`),
+  - Profile (`Xorg + Drivers`),
 
-  ⎯ Audio (`Pipewire`),
+  - Audio (`Pipewire`),
 
-  ⎯ Network Config (`Copy to Install`),
+  - Network Config (`Copy to Install`),
 
-  ⎯ After installation is done, select `Yes` and CHROOT in.
+  - After installation is done, select `Yes` and CHROOT in.
 
 </details>
 
@@ -79,11 +79,11 @@ Quick Preview of latest (8/11/25):
 
 - Configure/Setup Systemd (Archinstall may not fully do so):
 
-  ⎯ Check entries: `bootctl status`
+  - Check entries: `bootctl status`
 
-  ⎯ `ls /boot/` (Check files)
+  - `ls /boot/` (Check files)
 
-  ⎯ `nano /boot/loader/loader.conf` (Update loader config)
+  - `nano /boot/loader/loader.conf` (Update loader config)
 
     ```bash
     default  arch.conf
@@ -92,19 +92,19 @@ Quick Preview of latest (8/11/25):
     #editor  no
     ```
 
-  ⎯ `ls /boot/loader/entries/` (Check files)
+  - `ls /boot/loader/entries/` (Check files)
 
 - Change Archinstall default entry name structure:
 
-  ⎯ `mv /boot/loader/entries/*_linux.conf /boot/loader/entries/arch.conf`
+  - `mv /boot/loader/entries/*_linux.conf /boot/loader/entries/arch.conf`
 
-  ⎯ `mv /boot/loader/entries/*_linux-fallback.conf /boot/loader/entries/arch-fallback.conf`
+  - `mv /boot/loader/entries/*_linux-fallback.conf /boot/loader/entries/arch-fallback.conf`
 
 - Update `arch.conf` and `arch-fallback.conf`:
 
-  ⎯ `nano /boot/loader/entries/arch.conf`
+  - `nano /boot/loader/entries/arch.conf`
 
-  ⎯ `nano /boot/loader/entries/arch-fallback.conf`
+  - `nano /boot/loader/entries/arch-fallback.conf`
 
     ```plaintext
     -- arch.conf --
@@ -122,11 +122,11 @@ Quick Preview of latest (8/11/25):
 
 - Create the boot entry to finish:
 
-  ⎯ **Note**: `--part` number is the partition containing the EFI (/boot marked)
+  - **Note**: `--part` number is the partition containing the EFI (/boot marked)
 
-  ⎯ `lsblk`
+  - `lsblk`
 
-  ⎯ `efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /EFI/systemd/systemd-bootx64.efi`
+  - `efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /EFI/systemd/systemd-bootx64.efi`
 
        - Grub note for future reference: 1. pacman -S grub efibootmgr dosfstools mtools |  2. grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB | grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -146,7 +146,7 @@ Quick Preview of latest (8/11/25):
 
 - `nmcli device`
 
-  ⎯ `nmcli device wifi`
+  - `nmcli device wifi`
 
 - `nmcli dev wifi connect MyWiFiHere-2G password PASSWORD-HERE`
 
@@ -158,25 +158,25 @@ Quick Preview of latest (8/11/25):
 
 - Boot back into the live environment using USB.
 
-  ⎯ Once loaded, check partitions: `lsblk`
+  - Once loaded, check partitions: `lsblk`
 
-  ⎯ Mount Root (Main Filesystem): `mount /dev/sdaX /mnt`
+  - Mount Root (Main Filesystem): `mount /dev/sdaX /mnt`
 
-  ⎯ Mount EFI (/boot Partition): `mount /dev/sdaX /mnt/boot`
+  - Mount EFI (/boot Partition): `mount /dev/sdaX /mnt/boot`
 
-  ⎯ Mount Home (if separated): `mount /dev/sdaX /mnt/home`
+  - Mount Home (if separated): `mount /dev/sdaX /mnt/home`
 
-  ⎯ Chroot: `arch-chroot /mnt`
+  - Chroot: `arch-chroot /mnt`
 
 - Make sure to connect to a network using the methods.
 
 - When done:
 
-  ⎯ `exit`
+  - `exit`
 
-  ⎯ `umount -R /mnt`
+  - `umount -R /mnt`
 
-  ⎯ `reboot` (unplug USB when the screen blanks)
+  - `reboot` (unplug USB when the screen blanks)
 
 </details>
 
@@ -186,15 +186,15 @@ Quick Preview of latest (8/11/25):
 
 - **Add Chaotic-AUR**:
 
-  ⎯ `sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com`
+  - `sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com`
 
-  ⎯ `sudo pacman-key --lsign-key 3056513887B78AEB`
+  - `sudo pacman-key --lsign-key 3056513887B78AEB`
 
-  ⎯ `sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'`
+  - `sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'`
 
-  ⎯ `sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'`
+  - `sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'`
 
-  ⎯ `sudo nano /etc/pacman.conf` (Add the below to the bottom)
+  - `sudo nano /etc/pacman.conf` (Add the below to the bottom)
 
     ```plaintext
     -- pacman.conf --
@@ -204,15 +204,15 @@ Quick Preview of latest (8/11/25):
 
   ⎯ `sudo pacman -Syu yay`
 
-- **Gnome + DM** ⎯ `sudo pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility emptty`
+- **Gnome + DM** - `sudo pacman -S gnome-shell gnome-control-center gnome-tweaks gnome-keyring polkit-gnome gnome-themes-extra gnome-disk-utility emptty`
 
-- **Functions** ⎯ `sudo pacman -S wget jq wmctrl iwd smartmontools gstreamer gst-plugins-good gst-plugin-pipewire gtk-engine-murrine sassc vte3 libhandy libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools oh-my-posh ffmpegthumbnailer feh gufw`
+- **Functions** - `sudo pacman -S wget jq wmctrl iwd smartmontools gstreamer gst-plugins-good gst-plugin-pipewire gtk-engine-murrine sassc vte3 libhandy libbacktrace streamlink ntfs-3g mtools exfatprogs dosfstools oh-my-posh ffmpegthumbnailer feh gufw`
 
        - **Via Yay** ⎯ `yay -S actions-for-nautilus ddcutil-service`
 
-- **Apps** ⎯ `sudo pacman -S kitty extension-manager zed deskflow mpv zen-browser-bin pamac localsend btop twitch-tui gimp geary`
+- **Apps** - `sudo pacman -S kitty extension-manager zed deskflow mpv zen-browser-bin pamac localsend btop twitch-tui gimp geary`
 
-- **Fonts** ⎯ `sudo pacman -S noto-fonts noto-fonts-emoji ttf-roboto ttf-sourcecodepro-nerd`
+- **Fonts** - `sudo pacman -S noto-fonts noto-fonts-emoji ttf-roboto ttf-sourcecodepro-nerd`
 
 - UFW setup:
      - sudo ufw default deny incoming
@@ -235,7 +235,7 @@ Quick Preview of latest (8/11/25):
 
 - **Edit GPU Section**:
 
-  ⎯ Open "config.jsonc" in .config folder and edit "gpu" section. Choose which to use and if text entry, edit it to be correct
+  - Open "config.jsonc" in .config folder and edit "gpu" section. Choose which to use and if text entry, edit it to be correct
 
 </details>
 
@@ -304,23 +304,23 @@ Quick Preview of latest (8/11/25):
 
 - **Windows and Overall**:
 
-  ⎯ Download ZIP: https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme
+  - Download ZIP: https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme
 
-  ⎯ Open terminal and CD into the extracted folder.
+  - Open terminal and CD into the extracted folder.
 
-    - Now enter: `./install.sh -n "evernordic" --tweaks macos float outline -c dark`.
+    - Enter: `./install.sh --tweaks macos float outline -c dark`.
 
-  ⎯ Once installed, replace with the gnome-shell.css in `/home/.themes/Evernordic-Dark/gnome-shell`. If original is updated and current here outdated, replace as needed (insteuctions within the gnome-shell.css)
+  - Once installed, replace with the gnome-shell.css in `/home/.themes/Evernordic-Dark/gnome-shell`. If original is updated and current here outdated, replace as needed (instructions within the gnome-shell.css)
 
 - **Gruvbox Plus Dark Icons**:
 
-  ⎯ Download ZIP: https://github.com/SylEleuth/gruvbox-plus-icon-pack
+  - Download ZIP: https://github.com/SylEleuth/gruvbox-plus-icon-pack
 
-  ⎯ Create an `icons` folder at: `/home/USER/.local/share/icons` & bookmark it.
+  - Create an `icons` folder at: `/home/USER/.local/share/icons` & bookmark it.
 
     - Copy `Gruvbox-Plus-Dark` and Light variant into the folder.
 
-  ⎯ Open Terminal & CD into extracted folder: `~/gruvbox-plus-icon-pack-master/scripts`.
+  - Open Terminal & CD into extracted folder: `~/gruvbox-plus-icon-pack-master/scripts`.
 
     - `chmod +x folders-color-chooser`.
 
@@ -328,15 +328,15 @@ Quick Preview of latest (8/11/25):
 
 - **Capitaine Cursor**:
 
-  ⎯ Download ZIP: https://github.com/sainnhe/capitaine-cursors
+  - Download ZIP: https://github.com/sainnhe/capitaine-cursors
 
-  ⎯ Extract and copy "Gruvbox", "Nord", "Palenight" standard variants into `~/.local/share/icons`
+  - Extract and copy "Gruvbox", "Nord", "Palenight" standard variants into `~/.local/share/icons`
 
     - **Additional Cursors**: [Catppuccin Cursors](https://github.com/catppuccin/cursors).
 
 - **Apply**:
 
-  ⎯ Open *Gnome Tweaks* and select.
+  - Open *Gnome Tweaks* and select.
 
 </details>
 
